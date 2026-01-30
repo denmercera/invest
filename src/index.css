@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Design Tokens */
+  --color-accent-main: #059669;
+  /* Brighter Green */
+  --color-accent-secondary: #E8F5E9;
+  --color-text: #1d1d1f;
+  --color-bg: #FFFFFF;
+  /* Pure White */
+
+  --color-card-bg: #F9F9F9;
+  --color-btn-bg: #1B4D3E;
+  --color-btn-text: #FFFFFF;
+
+  --radius-card: 24px;
+  --radius-btn: 99px;
+
+  color-scheme: light;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.slide-content {
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .slide-content {
+    padding: 4rem 4rem 2rem 4rem;
+  }
+}
+
+.slide-content::-webkit-scrollbar {
+  display: none;
+}
+
+.slide-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
