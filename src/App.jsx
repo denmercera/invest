@@ -32,16 +32,15 @@ export default function App() {
         <Slide style={{ padding: 0, maxWidth: 'none', width: '100vw' }}>
           <div className="flex flex-col h-full w-full">
             {/* Top Image - Full Width */}
-            <div className="w-full h-[40vh] md:h-[55%] overflow-hidden">
+            <div className="w-full h-[30vh] md:h-[45%] overflow-hidden">
               <img src="/slide1.PNG" alt="Вкусно" className="w-full h-full object-cover" />
             </div>
 
             {/* Content - shifted left */}
             <div className="flex-1 flex flex-col justify-center px-8 md:px-16 text-left bg-white py-8">
               <div className="max-w-4xl">
-                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 text-black leading-[0.9] tracking-tighter">
-                  Вкусно — <br />
-                  <span className="text-[#059669]">Столовая</span>
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 text-black leading-none tracking-tighter">
+                  <span className="font-poster text-6xl sm:text-7xl md:text-8xl">Вкусно</span> — <span className="text-[#059669]">Столовая</span>
                 </h1>
                 <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-10 leading-snug max-w-xl">
                   Открытие столовой русской кухни в Белграде. <br />
@@ -95,22 +94,22 @@ export default function App() {
                 <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
                   <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black font-bold text-xs">ИТ</div>
                   <div>
-                    <div className="font-bold">Ит-специалисты</div>
-                    <div className="text-xs text-gray-500">100к+ в Белграде</div>
+                    <div className="font-bold">ИТ-специалисты</div>
+                    <div className="text-xs text-gray-500">Белград (100к+)</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-black"><Display /></div>
+                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-black"><Person /></div>
                   <div>
-                    <div className="font-bold">Офисные сотрудники</div>
-                    <div className="text-xs text-gray-500">Сербы и иностранцы</div>
+                    <div className="font-bold">Простые обыватели</div>
+                    <div className="text-xs text-gray-500">Мужчины и женщины</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-black"><Rocket /></div>
+                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-black"><ShoppingBag /></div>
                   <div>
-                    <div className="font-bold">Доставка</div>
-                    <div className="text-xs text-gray-500">Wolt / Glovo</div>
+                    <div className="font-bold">На вынос / Домой</div>
+                    <div className="text-xs text-gray-500">Wolt / Glovo / С собой</div>
                   </div>
                 </div>
               </div>
@@ -149,8 +148,8 @@ export default function App() {
                 Нашими услугами ежедневно пользовались сотрудники ведущих технологических брендов.
               </p>
               <p className="text-lg text-gray-600 border-t border-gray-200 pt-8 leading-snug">
-                За плечами команды запуск 3 столовых и 5 кафе. Мы знаем все нюансы:
-                от оптимизации стоимости продуктов до управления качеством.
+                Мы знаем все нюансы: от оптимизации стоимости продуктов до управления качеством.
+                Налаженные процессы и проверенные поставщики.
               </p>
             </div>
 
@@ -182,39 +181,39 @@ export default function App() {
               {/* Header */}
               <div className="flex justify-between items-end border-b pb-4">
                 <span className="text-gray-500 text-sm font-bold">Детализация запуска</span>
-                <span className="text-4xl font-bold text-green-700">19,000 €</span>
+                <span className="text-4xl font-bold text-green-700">42,930 €</span>
               </div>
 
               {/* Items Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
                   <div className="text-gray-500 font-medium">Оборудование</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">5,000 €</div>
+                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">9,830 €</div>
                 </div>
 
                 <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Вентиляция</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">2,500 €</div>
+                  <div className="text-gray-500 font-medium">Вентиляция и зал</div>
+                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">5,400 €</div>
                 </div>
 
                 <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
                   <div className="text-gray-500 font-medium">Ремонт / Мебель</div>
+                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">3,500 €</div>
+                </div>
+
+                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
+                  <div className="text-gray-500 font-medium">Машина / Авто</div>
                   <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">4,000 €</div>
                 </div>
 
                 <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Аренда + Депо</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">2,500 €</div>
+                  <div className="text-gray-500 font-medium">Маркетинг + Док.</div>
+                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">1,100 €</div>
                 </div>
 
                 <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Маркетинг</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">1,000 €</div>
-                </div>
-
-                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Подушка (Cash)</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">3,000 €</div>
+                  <div className="text-gray-500 font-medium font-bold">Подушка (3 мес)</div>
+                  <div className="p-2 bg-yellow-100 rounded-lg text-black font-bold">21,100 €</div>
                 </div>
               </div>
             </div>
@@ -231,37 +230,37 @@ export default function App() {
                 <h3 className="text-2xl font-bold flex items-center gap-3">
                   <Person className="text-black" /> Команда
                 </h3>
-                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">~3,400 € / мес</span>
+                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">~5,500 € / мес</span>
               </div>
 
               <div className="grid grid-cols-1 gap-4">
                 <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><Star /></div>
-                    <span className="font-bold text-gray-700">Шеф-повар</span>
+                    <span className="font-bold text-gray-700">Повара (2 чел)</span>
                   </div>
-                  <span className="font-bold">1200 €</span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><Flame /></div>
-                    <span className="font-bold text-gray-700">Повар-универсал</span>
-                  </div>
-                  <span className="font-bold">900 €</span>
+                  <span className="font-bold">2000 €</span>
                 </div>
                 <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><ShieldCheck /></div>
-                    <span className="font-bold text-gray-700">Клининг / Пом.</span>
+                    <span className="font-bold text-gray-700">Управляющий</span>
                   </div>
-                  <span className="font-bold">600 €</span>
+                  <span className="font-bold">1500 €</span>
                 </div>
                 <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><ShoppingBag /></div>
                     <span className="font-bold text-gray-700">Кассир</span>
                   </div>
-                  <span className="font-bold">700 €</span>
+                  <span className="font-bold">800 €</span>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><Flame /></div>
+                    <span className="font-bold text-gray-700">Уборка / Водитель</span>
+                  </div>
+                  <span className="font-bold">1200 €</span>
                 </div>
               </div>
             </div>
@@ -272,29 +271,29 @@ export default function App() {
                 <h3 className="text-2xl font-bold flex items-center gap-3">
                   <Target className="text-black" /> Постоянные расходы
                 </h3>
-                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">~2,500 € / мес</span>
+                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">~4,000 € / мес</span>
               </div>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4 pb-4 border-b border-gray-100">
                   <div className="p-3 bg-gray-100 rounded-xl"><MapPin className="text-black" /></div>
                   <div>
-                    <div className="text-2xl font-bold">1,500 €</div>
+                    <div className="text-2xl font-bold">1,200 €</div>
                     <div className="text-gray-500">Аренда помещения</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-4 pb-4 border-b border-gray-100">
                   <div className="p-3 bg-gray-100 rounded-xl"><Diamond className="text-black" /></div>
                   <div>
-                    <div className="text-2xl font-bold">900 €</div>
-                    <div className="text-gray-500">Коммуналка + Налоги</div>
+                    <div className="text-2xl font-bold">2,400 €</div>
+                    <div className="text-gray-500">Продукты + Коммуналка</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-gray-100 rounded-xl"><Smartphone className="text-black" /></div>
                   <div>
-                    <div className="text-2xl font-bold">100 €</div>
-                    <div className="text-gray-500">Связь, Интернет, POS</div>
+                    <div className="text-2xl font-bold">400 €</div>
+                    <div className="text-gray-500">Маркетинг + Бухгалтерия</div>
                   </div>
                 </div>
               </div>
@@ -310,20 +309,20 @@ export default function App() {
               <div className="bg-gray-50 p-6 rounded-3xl">
                 <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><ShoppingBag /></div>
                 <h4 className="text-xl font-bold mb-2">1. Зал (Оффлайн)</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">60 <span className="text-sm text-gray-400 font-normal">чел/день</span></div>
-                <p className="text-gray-500 leading-snug">Ланчи для офисов. Основной трафик.</p>
+                <div className="text-3xl font-bold text-gray-800 mb-2">40 <span className="text-sm text-gray-400 font-normal">чел/день</span></div>
+                <p className="text-gray-500 leading-snug">Стационарный трафик. Русская кухня.</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-3xl">
                 <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><Smartphone /></div>
                 <h4 className="text-xl font-bold mb-2">2. Доставка</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">15 <span className="text-sm text-gray-400 font-normal">зак/день</span></div>
-                <p className="text-gray-500 leading-snug">Wolt / Glovo. Работа из дома.</p>
+                <div className="text-3xl font-bold text-gray-800 mb-2">20 <span className="text-sm text-gray-400 font-normal">зак/день</span></div>
+                <p className="text-gray-500 leading-snug">Wolt / Glovo. Обед на дом.</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-3xl">
                 <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><LayoutList /></div>
                 <h4 className="text-xl font-bold mb-2">3. Питание компаний</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">30 <span className="text-sm text-gray-400 font-normal">обедов</span></div>
-                <p className="text-gray-500 leading-snug">Договоры с ит-компаниями.</p>
+                <div className="text-3xl font-bold text-gray-800 mb-2">50 <span className="text-sm text-gray-400 font-normal">обедов</span></div>
+                <p className="text-gray-500 leading-snug">Корпоративные контракты.</p>
               </div>
             </div>
 
@@ -338,7 +337,7 @@ export default function App() {
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
             <div style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#666' }}>Необходимая сумма инвестиций</div>
             <div className="text-6xl md:text-8xl font-bold text-[#059669] mb-8 md:mb-12">
-              19,000 €
+              42,930 €
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-[1000px] mx-auto">

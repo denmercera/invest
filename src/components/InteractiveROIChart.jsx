@@ -3,30 +3,25 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import Card from './Card';
 
 const InteractiveROIChart = () => {
-    const investment = 19000;
-    const monthlyBurn = 14000; // Salary + Rent + Food Cost + Tax approx
-    const monthlyRevenue = 17500; // ~50-60 checks
-    // Net ~3500
-
-    // Simulation
-    // Month 0: -19000
-    // Month 1: -19000 - 3000 (losses start) + revenue... simplified:
-    // Let's say Month 1-2 ramp up, Month 3 stable.
+    const investment = 42930;
+    const monthlyBurn = 9500; // Rent + Salary + Food Cost + Tax
+    const monthlyRevenue = 17850; // ~70-90 checks
+    const monthlyProfit = 8350;
 
     const data = [
-        { month: 'Старт', balance: -19000, cashflow: 0 },
-        { month: 'Месяц 1', balance: -20500, cashflow: -1500 }, // Ramp up loss
-        { month: 'Месяц 2', balance: -21000, cashflow: -500 },  // Ramp up loss
-        { month: 'Месяц 3', balance: -20500, cashflow: 500 },   // Small profit
-        { month: 'Месяц 4', balance: -18500, cashflow: 2000 },  // Growth
-        { month: 'Месяц 5', balance: -16000, cashflow: 2500 },
-        { month: 'Месяц 6', balance: -13000, cashflow: 3000 },
-        { month: 'Месяц 7', balance: -10000, cashflow: 3000 },
-        { month: 'Месяц 8', balance: -7000, cashflow: 3000 },
-        { month: 'Месяц 9', balance: -4000, cashflow: 3000 },
-        { month: 'Месяц 10', balance: -1000, cashflow: 3000 },
-        { month: 'Месяц 11', balance: 2000, cashflow: 3000 }, // ROI Break even
-        { month: 'Месяц 12', balance: 5000, cashflow: 3000 },
+        { month: 'Старт', balance: -42930, cashflow: 0 },
+        { month: 'Месяц 1', balance: -44930, cashflow: -2000 },
+        { month: 'Месяц 2', balance: -45430, cashflow: -500 },
+        { month: 'Месяц 3', balance: -45430, cashflow: 0 },
+        { month: 'Месяц 4', balance: -37080, cashflow: 8350 },
+        { month: 'Месяц 5', balance: -28730, cashflow: 8350 },
+        { month: 'Месяц 6', balance: -20380, cashflow: 8350 },
+        { month: 'Месяц 7', balance: -12030, cashflow: 8350 },
+        { month: 'Месяц 8', balance: -3680, cashflow: 8350 },
+        { month: 'Месяц 9', balance: 4670, cashflow: 8350 },    // ROI Break even
+        { month: 'Месяц 10', balance: 13020, cashflow: 8350 },
+        { month: 'Месяц 11', balance: 21370, cashflow: 8350 },
+        { month: 'Месяц 12', balance: 29720, cashflow: 8350 },
     ];
 
     return (

@@ -40,6 +40,22 @@ export const Slideshow = ({ children }) => {
                 position: 'relative',
                 backgroundColor: 'transparent'
             }}>
+                {/* Logo Global */}
+                {currentSlide !== 0 && (
+                    <div className="font-poster" style={{
+                        position: 'absolute',
+                        top: '20px',
+                        left: '20px',
+                        zIndex: 100,
+                        fontSize: '1.5rem',
+                        color: (currentSlide === 1 || currentSlide === 4) ? 'white' : '#059669',
+                        pointerEvents: 'none',
+                        transition: 'color 0.5s ease'
+                    }}>
+                        Вкусно
+                    </div>
+                )}
+
                 {/* Progress Bar */}
                 <div style={{
                     position: 'absolute',

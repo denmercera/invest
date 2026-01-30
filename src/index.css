@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Postertoaster';
+  src: url('/Postertoaster.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-poster {
+  font-family: 'Postertoaster', sans-serif;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

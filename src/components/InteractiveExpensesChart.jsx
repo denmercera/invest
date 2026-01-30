@@ -3,12 +3,8 @@ import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recha
 import Card from './Card';
 
 const data = [
-    { name: 'Кухня', value: 2130, color: '#0F5132' },
-    { name: 'Вентиляция', value: 5400, color: '#198754' },
-    { name: 'Интерьер и ремонт', value: 5900, color: '#20C997' },
-    { name: 'Упаковка и бренд', value: 2100, color: '#0DCAF0' },
-    { name: 'Оборотный капитал', value: 800, color: '#6C757D' },
-    { name: 'Подушка (3 мес)', value: 3000, color: '#FFC107' },
+    { name: 'Оборудование и запуск', value: 21830, color: '#0F5132' },
+    { name: 'Подушка (3 мес + запас)', value: 21100, color: '#FFC107' },
 ];
 
 // Calculate total for center text
@@ -36,14 +32,14 @@ const InteractiveExpensesChart = () => {
                         </Pie>
                         <Tooltip formatter={(value) => `${value} €`} />
                         <Legend iconType="circle" />
-                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
+                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" style={{ fontSize: '18px', fontWeight: 'bold' }}>
                             {total} €
                         </text>
                     </PieChart>
                 </ResponsiveContainer>
             </div>
             <p className="text-center text-sm text-gray-500 mt-2">
-                Включает подушку безопасности на 3 месяца (Зарплаты + Аренда)
+                Включает подушку безопасности на 3 месяца (Зарплата + Аренда) * 3 + 1000 € на непредвиденные расходы.
             </p>
         </Card>
     );
