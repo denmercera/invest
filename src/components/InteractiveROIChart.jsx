@@ -5,7 +5,7 @@ import Card from './Card';
 const modelsData = {
     canteen: {
         investment: 42930,
-        monthlyProfit: 8350,
+        monthlyProfit: 9650, // Updated: Reduced fixed costs by 1300
         initialBurn: [-2000, -500, 0]
     },
     darkKitchen: {

@@ -78,11 +78,11 @@ export default function App() {
     ],
     fixed: [
       { name: 'Аренда помещения', value: '1,200 €', icon: <MapPin /> },
-      { name: 'Продукты + Коммуналка', value: '2,400 €', icon: <Diamond /> },
-      { name: 'Маркетинг + Бухгалтерия', value: '400 €', icon: <Smartphone /> },
+      { name: 'Коммуналка', value: '500 €', icon: <Diamond /> },
+      { name: 'Маркетинг', value: '1,000 €', icon: <Smartphone /> },
     ],
     totalTeam: '~5,500 €',
-    totalFixed: '~4,000 €'
+    totalFixed: '~2,700 €'
   };
 
   const opexData = activeModel === 'canteen' ? canteenOpex : dkOpex;
