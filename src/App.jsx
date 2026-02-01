@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import Card from './components/Card';
 import Button from './components/Button';
 import BusinessModel from './components/BusinessModel';
@@ -23,7 +22,87 @@ const StartButton = () => {
   );
 };
 
+const ModelSwitcher = ({ activeModel, setActiveModel }) => {
+  return (
+    <div className="flex bg-gray-100 p-1 rounded-2xl w-fit mx-auto mb-8">
+      <button
+        onClick={() => setActiveModel('canteen')}
+        className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'canteen'
+          ? 'bg-white text-black shadow-sm'
+          : 'text-gray-500 hover:text-black'
+          }`}
+      >
+        Столовая
+      </button>
+      <button
+        onClick={() => setActiveModel('darkKitchen')}
+        className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'darkKitchen'
+          ? 'bg-white text-black shadow-sm'
+          : 'text-gray-500 hover:text-black'
+          }`}
+      >
+        Дарк Китчен
+      </button>
+    </div>
+  );
+};
+
 export default function App() {
+  const [activeModel, setActiveModel] = useState('canteen');
+
+  const dkEquipment = [
+    { name: 'Ремонт помещения', value: '2,000 €' },
+    { name: 'Оборудование (Кухня + Хранение)', value: '3,730 €' },
+    { name: 'Вентиляция и рабочая зона', value: '4,500 €' },
+    { name: 'Машина + Доставка', value: '4,600 €' },
+    { name: 'Офис + Инвентарь', value: '250 €' },
+    { name: 'Подушка (3 мес)', value: '22,500 €', highlight: true }
+  ];
+
+  const canteenEquipment = [
+    { name: 'Оборудование', value: '9,830 €' },
+    { name: 'Вентиляция и зал', value: '5,400 €' },
+    { name: 'Ремонт / Мебель', value: '3,500 €' },
+    { name: 'Машина / Авто', value: '4,000 €' },
+    { name: 'Маркетинг + Док.', value: '1,100 €' },
+    { name: 'Подушка (3 мес)', value: '21,100 €', highlight: true }
+  ];
+
+  const dkOpex = {
+    team: [
+      { name: 'Повар', value: '1,000 €', icon: <Star /> },
+      { name: 'Управляющий', value: '1,500 €', icon: <ShieldCheck /> },
+      { name: 'Водитель / Уборщица', value: '1,200 €', icon: <Flame /> },
+      { name: 'Менеджеры (Менеджмент)', value: '600 €', icon: <Person /> },
+    ],
+    fixed: [
+      { name: 'Аренда', value: '1,000 €', icon: <MapPin /> },
+      { name: 'Реклама + Таргет', value: '1,000 €', icon: <Smartphone /> },
+      { name: 'Налоги + Касса + Комм.', value: '1,200 €', icon: <Diamond /> },
+    ],
+    totalTeam: '~4,300 €',
+    totalFixed: '~3,200 €'
+  };
+
+  const canteenOpex = {
+    team: [
+      { name: 'Повара (2 чел)', value: '2,000 €', icon: <Star /> },
+      { name: 'Управляющий', value: '1,500 €', icon: <ShieldCheck /> },
+      { name: 'Кассир', value: '800 €', icon: <ShoppingBag /> },
+      { name: 'Уборка / Водитель', value: '1,200 €', icon: <Flame /> },
+    ],
+    fixed: [
+      { name: 'Аренда помещения', value: '1,200 €', icon: <MapPin /> },
+      { name: 'Продукты + Коммуналка', value: '2,400 €', icon: <Diamond /> },
+      { name: 'Маркетинг + Бухгалтерия', value: '400 €', icon: <Smartphone /> },
+    ],
+    totalTeam: '~5,500 €',
+    totalFixed: '~4,000 €'
+  };
+
+  const opexData = activeModel === 'canteen' ? canteenOpex : dkOpex;
+  const equipData = activeModel === 'canteen' ? canteenEquipment : dkEquipment;
+  const totalInvest = activeModel === 'canteen' ? '42,930 €' : '37,580 €';
   return (
     <div className="app">
       <Slideshow>
@@ -170,10 +249,11 @@ export default function App() {
         </Slide>
 
         <Slide title="Структура инвестиций">
+          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 h-full">
             {/* Chart Area */}
             <div className="col-span-1 md:col-span-5 bg-gray-50 rounded-3xl p-4">
-              <InteractiveExpensesChart />
+              <InteractiveExpensesChart model={activeModel} />
             </div>
 
             {/* Grid of Expenses */}
@@ -181,40 +261,17 @@ export default function App() {
               {/* Header */}
               <div className="flex justify-between items-end border-b pb-4">
                 <span className="text-gray-500 text-sm font-bold">Детализация запуска</span>
-                <span className="text-4xl font-bold text-green-700">42,930 €</span>
+                <span className="text-4xl font-bold text-green-700">{totalInvest}</span>
               </div>
 
               {/* Items Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Оборудование</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">9,830 €</div>
-                </div>
-
-                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Вентиляция и зал</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">5,400 €</div>
-                </div>
-
-                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Ремонт / Мебель</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">3,500 €</div>
-                </div>
-
-                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Машина / Авто</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">4,000 €</div>
-                </div>
-
-                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium">Маркетинг + Док.</div>
-                  <div className="p-2 bg-gray-100 rounded-lg text-black font-bold">1,100 €</div>
-                </div>
-
-                <div className="p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm">
-                  <div className="text-gray-500 font-medium font-bold">Подушка (3 мес)</div>
-                  <div className="p-2 bg-yellow-100 rounded-lg text-black font-bold">21,100 €</div>
-                </div>
+                {equipData.map((item, idx) => (
+                  <div key={idx} className={`p-5 bg-gray-50 rounded-2xl flex items-center justify-between shadow-sm`}>
+                    <div className={`text-gray-500 font-medium ${item.highlight ? 'font-bold' : ''}`}>{item.name}</div>
+                    <div className={`p-2 rounded-lg text-black font-bold ${item.highlight ? 'bg-yellow-100' : 'bg-gray-100'}`}>{item.value}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -222,6 +279,7 @@ export default function App() {
 
         {/* SLIDE 5: MONTHLY EXPENSES */}
         <Slide title="Операционные расходы" className="bg-[#059669] text-white">
+          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 h-full">
 
             {/* Team Block */}
@@ -230,38 +288,21 @@ export default function App() {
                 <h3 className="text-2xl font-bold flex items-center gap-3">
                   <Person className="text-black" /> Команда
                 </h3>
-                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">~5,500 € / мес</span>
+                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">{opexData.totalTeam} / мес</span>
               </div>
 
               <div className="grid grid-cols-1 gap-4">
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><Star /></div>
-                    <span className="font-bold text-gray-700">Повара (2 чел)</span>
+                {opexData.team.map((member, idx) => (
+                  <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black">
+                        {member.icon}
+                      </div>
+                      <span className="font-bold text-gray-700">{member.name}</span>
+                    </div>
+                    <span className="font-bold">{member.value}</span>
                   </div>
-                  <span className="font-bold">2000 €</span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><ShieldCheck /></div>
-                    <span className="font-bold text-gray-700">Управляющий</span>
-                  </div>
-                  <span className="font-bold">1500 €</span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><ShoppingBag /></div>
-                    <span className="font-bold text-gray-700">Кассир</span>
-                  </div>
-                  <span className="font-bold">800 €</span>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black"><Flame /></div>
-                    <span className="font-bold text-gray-700">Уборка / Водитель</span>
-                  </div>
-                  <span className="font-bold">1200 €</span>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -271,31 +312,21 @@ export default function App() {
                 <h3 className="text-2xl font-bold flex items-center gap-3">
                   <Target className="text-black" /> Постоянные расходы
                 </h3>
-                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">~4,000 € / мес</span>
+                <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">{opexData.totalFixed} / мес</span>
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-start gap-4 pb-4 border-b border-gray-100">
-                  <div className="p-3 bg-gray-100 rounded-xl"><MapPin className="text-black" /></div>
-                  <div>
-                    <div className="text-2xl font-bold">1,200 €</div>
-                    <div className="text-gray-500">Аренда помещения</div>
+                {opexData.fixed.map((item, idx) => (
+                  <div key={idx} className={`flex items-start gap-4 ${idx !== opexData.fixed.length - 1 ? 'pb-4 border-b border-gray-100' : ''}`}>
+                    <div className="p-3 bg-gray-100 rounded-xl">
+                      {React.cloneElement(item.icon, { className: 'text-black' })}
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold">{item.value}</div>
+                      <div className="text-gray-500">{item.name}</div>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-4 pb-4 border-b border-gray-100">
-                  <div className="p-3 bg-gray-100 rounded-xl"><Diamond className="text-black" /></div>
-                  <div>
-                    <div className="text-2xl font-bold">2,400 €</div>
-                    <div className="text-gray-500">Продукты + Коммуналка</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-100 rounded-xl"><Smartphone className="text-black" /></div>
-                  <div>
-                    <div className="text-2xl font-bold">400 €</div>
-                    <div className="text-gray-500">Маркетинг + Бухгалтерия</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -304,40 +335,57 @@ export default function App() {
 
         {/* SLIDE 6: FINANCIAL MODEL */}
         <Slide title="Финансовая модель">
+          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
           <div className="flex flex-col h-full gap-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-gray-50 p-6 rounded-3xl">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><ShoppingBag /></div>
-                <h4 className="text-xl font-bold mb-2">1. Зал (Оффлайн)</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">40 <span className="text-sm text-gray-400 font-normal">чел/день</span></div>
-                <p className="text-gray-500 leading-snug">Стационарный трафик. Русская кухня.</p>
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4">
+                  {activeModel === 'canteen' ? <ShoppingBag /> : <Rocket />}
+                </div>
+                <h4 className="text-xl font-bold mb-2">
+                  {activeModel === 'canteen' ? '1. Зал (Оффлайн)' : '1. Масштаб'}
+                </h4>
+                <div className="text-3xl font-bold text-gray-800 mb-2">
+                  {activeModel === 'canteen' ? '40 ' : '100% '}
+                  <span className="text-sm text-gray-400 font-normal">
+                    {activeModel === 'canteen' ? 'чел/день' : 'Фокус на доставку'}
+                  </span>
+                </div>
+                <p className="text-gray-500 leading-snug">
+                  {activeModel === 'canteen' ? 'Стационарный трафик. Русская кухня.' : 'Минимальная аренда — максимум кухни.'}
+                </p>
               </div>
               <div className="bg-gray-50 p-6 rounded-3xl">
                 <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><Smartphone /></div>
                 <h4 className="text-xl font-bold mb-2">2. Доставка</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">20 <span className="text-sm text-gray-400 font-normal">зак/день</span></div>
+                <div className="text-3xl font-bold text-gray-800 mb-2">
+                  {activeModel === 'canteen' ? '20' : '50'} <span className="text-sm text-gray-400 font-normal">зак/день</span>
+                </div>
                 <p className="text-gray-500 leading-snug">Wolt / Glovo. Обед на дом.</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-3xl">
                 <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><LayoutList /></div>
                 <h4 className="text-xl font-bold mb-2">3. Питание компаний</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">50 <span className="text-sm text-gray-400 font-normal">обедов</span></div>
+                <div className="text-3xl font-bold text-gray-800 mb-2">
+                  {activeModel === 'canteen' ? '50' : '80'} <span className="text-sm text-gray-400 font-normal">обедов</span>
+                </div>
                 <p className="text-gray-500 leading-snug">Корпоративные контракты.</p>
               </div>
             </div>
 
             <div className="h-[300px] md:flex-1 bg-gray-50 rounded-3xl p-4 overflow-hidden">
-              <InteractiveROIChart />
+              <InteractiveROIChart model={activeModel} />
             </div>
           </div>
         </Slide>
 
         {/* SLIDE 7: INVESTMENT SUM */}
         <Slide title="Инвестиционное предложение">
+          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
             <div style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#666' }}>Необходимая сумма инвестиций</div>
             <div className="text-6xl md:text-8xl font-bold text-[#059669] mb-8 md:mb-12">
-              42,930 €
+              {totalInvest}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-[1000px] mx-auto">

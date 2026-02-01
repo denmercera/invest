@@ -2,33 +2,47 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine, AreaChart, Area } from 'recharts';
 import Card from './Card';
 
-const InteractiveROIChart = () => {
-    const investment = 42930;
-    const monthlyBurn = 9500; // Rent + Salary + Food Cost + Tax
-    const monthlyRevenue = 17850; // ~70-90 checks
-    const monthlyProfit = 8350;
+const modelsData = {
+    canteen: {
+        investment: 42930,
+        monthlyProfit: 8350,
+        initialBurn: [-2000, -500, 0]
+    },
+    darkKitchen: {
+        investment: 37580,
+        monthlyProfit: 6500, // Assumed target profit
+        initialBurn: [-2500, -1000, 0] // Assumed slightly higher burn due to delivery-only launch
+    }
+};
+
+const InteractiveROIChart = ({ model = 'canteen' }) => {
+    const config = modelsData[model] || modelsData.canteen;
 
     const data = [
-        { month: 'Старт', balance: -42930, cashflow: 0 },
-        { month: 'Месяц 1', balance: -44930, cashflow: -2000 },
-        { month: 'Месяц 2', balance: -45430, cashflow: -500 },
-        { month: 'Месяц 3', balance: -45430, cashflow: 0 },
-        { month: 'Месяц 4', balance: -37080, cashflow: 8350 },
-        { month: 'Месяц 5', balance: -28730, cashflow: 8350 },
-        { month: 'Месяц 6', balance: -20380, cashflow: 8350 },
-        { month: 'Месяц 7', balance: -12030, cashflow: 8350 },
-        { month: 'Месяц 8', balance: -3680, cashflow: 8350 },
-        { month: 'Месяц 9', balance: 4670, cashflow: 8350 },    // ROI Break even
-        { month: 'Месяц 10', balance: 13020, cashflow: 8350 },
-        { month: 'Месяц 11', balance: 21370, cashflow: 8350 },
-        { month: 'Месяц 12', balance: 29720, cashflow: 8350 },
+        { month: 'Старт', balance: -config.investment, cashflow: 0 },
+        { month: 'Месяц 1', balance: -config.investment + config.initialBurn[0], cashflow: config.initialBurn[0] },
+        { month: 'Месяц 2', balance: -config.investment + config.initialBurn[0] + config.initialBurn[1], cashflow: config.initialBurn[1] },
+        { month: 'Месяц 3', balance: -config.investment + config.initialBurn[0] + config.initialBurn[1] + config.initialBurn[2], cashflow: config.initialBurn[2] },
     ];
+
+    // Calculate months 4-12
+    let currentBalance = data[3].balance;
+    for (let i = 4; i <= 12; i++) {
+        currentBalance += config.monthlyProfit;
+        data.push({
+            month: `Месяц ${i}`,
+            balance: currentBalance,
+            cashflow: config.monthlyProfit
+        });
+    }
+
+    const breakEvenMonth = data.findIndex(d => d.balance >= 0);
 
     return (
         <Card className="h-full flex flex-col">
             <h3 className="mb-2">📉 Финансовая модель</h3>
             <div style={{ fontSize: '0.9rem', color: '#666', marginBottom: '1rem' }}>
-                Накопительный итог. Точка безубыточности (операционная) — 3-й месяц. Полный возврат инвестиций — 11-й месяц.
+                Накопительный итог. Точка безубыточности (операционная) — 3-й месяц. Полный возврат инвестиций — {breakEvenMonth > 0 ? breakEvenMonth : '11'}-й месяц.
             </div>
             <div className="h-[250px] md:h-[400px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -43,7 +57,7 @@ const InteractiveROIChart = () => {
                         <XAxis dataKey="month" />
                         <YAxis />
                         <Tooltip
-                            formatter={(value) => `${value} €`}
+                            formatter={(value) => `${value.toLocaleString()} €`}
                             contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}
                         />
                         <ReferenceLine y={0} stroke="#000" />
