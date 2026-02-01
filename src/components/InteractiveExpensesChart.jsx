@@ -8,8 +8,8 @@ const modelsData = {
         { name: 'Подушка (3 мес + запас)', value: 21100, color: '#FFC107' },
     ],
     darkKitchen: [
-        { name: 'Оборудование и запуск', value: 15080, color: '#0F5132' },
-        { name: 'Подушка (3 мес + запас)', value: 22500, color: '#FFC107' },
+        { name: 'Оборудование и запуск', value: 13080, color: '#0F5132' },
+        { name: 'Подушка (2 мес)', value: 15000, color: '#FFC107' },
     ]
 };
 

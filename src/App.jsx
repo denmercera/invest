@@ -30,13 +30,18 @@ export default function App() {
   // Actually, we can't use useSlideshow here because App is outside Slideshow.
   // We need to pass the selection logic down or handle it inside the Slide 1 component.
 
+  /* Dark Kitchen Data Updates
+     Ventilation: 2,500
+     Cushion: 15,000 (approx 2 months)
+     Total: ~28,080
+  */
   const dkEquipment = [
     { name: 'Ремонт помещения', value: '2,000 €' },
     { name: 'Оборудование (Кухня + Хранение)', value: '3,730 €' },
-    { name: 'Вентиляция и рабочая зона', value: '4,500 €' },
+    { name: 'Вентиляция и рабочая зона', value: '2,500 €' },
     { name: 'Машина + Доставка', value: '4,600 €' },
     { name: 'Офис + Инвентарь', value: '250 €' },
-    { name: 'Подушка (3 мес)', value: '22,500 €', highlight: true }
+    { name: 'Подушка (2 мес)', value: '15,000 €', highlight: true }
   ];
 
   const canteenEquipment = [
@@ -82,7 +87,7 @@ export default function App() {
 
   const opexData = activeModel === 'canteen' ? canteenOpex : dkOpex;
   const equipData = activeModel === 'canteen' ? canteenEquipment : dkEquipment;
-  const totalInvest = activeModel === 'canteen' ? '42,930 €' : '37,580 €';
+  const totalInvest = activeModel === 'canteen' ? '42,930 €' : '28,080 €';
   return (
     <div className="app">
       <Slideshow>
@@ -128,7 +133,7 @@ export default function App() {
                       <div className="p-2 bg-gray-200 rounded-lg text-black"><Rocket /></div>
                       <h3 className="font-bold text-lg">Dark Kitchen</h3>
                     </div>
-                    <p className="text-sm text-gray-500">Только доставка (Wolt/Glovo). <br />Быстрый запуск.</p>
+                    <p className="text-sm text-gray-500">Только доставка (Wolt, Glovo + Своя). <br />Быстрый запуск.</p>
                     <div className="mt-4 font-bold text-black group-hover:translate-x-1 transition-transform flex items-center gap-1">
                       Выбрать эту модель <ArrowRight width={16} />
                     </div>
@@ -156,7 +161,7 @@ export default function App() {
                 <p className="text-xl leading-snug mb-6 text-gray-800">
                   {activeModel === 'canteen'
                     ? 'Современный формат: вкусная домашняя еда, высокая скорость обслуживания и честные цены. Никакого ожидания официантов.'
-                    : 'Оптимизированное производство для работы с агрегаторами (Wolt, Glovo). Минимальная аренда, фокус на скорость и качество упаковки.'}
+                    : 'Оптимизированное производство для работы с агрегаторами (Wolt, Glovo) и собственной доставки в офисы/на дом.'}
                 </p>
               </div>
               <div className="flex gap-4">

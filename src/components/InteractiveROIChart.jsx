@@ -9,7 +9,7 @@ const modelsData = {
         initialBurn: [-2000, -500, 0]
     },
     darkKitchen: {
-        investment: 37580,
+        investment: 28080,
         monthlyProfit: 6500, // Assumed target profit
         initialBurn: [-2500, -1000, 0] // Assumed slightly higher burn due to delivery-only launch
     }
