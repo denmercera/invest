@@ -466,7 +466,7 @@ export default function App() {
               <div className="bg-gray-100 p-6 rounded-2xl">
                 <h4 className="font-bold text-green-900 mb-2 font-bold">Решение:</h4>
                 <ul className="space-y-2 text-green-800 leading-snug">
-                  <li className="flex items-center gap-2 font-bold"><Check className="w-4 h-4" /> Реклама в 200+ чатах Телеграм</li>
+                  <li className="flex items-center gap-2 font-bold"><Check className="w-4 h-4" /> Реклама в 40 чатах Телеграм</li>
                   <li className="flex items-center gap-2 font-bold"><Check className="w-4 h-4" /> Таргет на русскоязычных (Inst)</li>
                   <li className="flex items-center gap-2 font-bold"><Check className="w-4 h-4" /> Листовки в офисы рядом</li>
                 </ul>
