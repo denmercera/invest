@@ -9,46 +9,26 @@ import { ArrowRight, Star, ChartBar, Target, Person, ShieldCheck, Envelope, Smar
 import bgImage from './assets/bg.png';
 
 // Button that uses the context to navigate
-const StartButton = () => {
-  const { nextSlide } = useSlideshow();
+const StartButton = ({ label, onClick, className, variant = 'primary' }) => {
   return (
     <Button
-      className="px-8 md:px-10 py-4 md:py-5 text-lg md:text-xl"
-      style={{ backgroundColor: 'var(--color-accent-main)', color: 'white' }}
-      onClick={nextSlide}
+      className={`px-6 py-4 text-lg md:text-xl w-full md:w-auto ${className}`}
+      style={{
+        backgroundColor: variant === 'primary' ? 'var(--color-accent-main)' : '#333',
+        color: 'white'
+      }}
+      onClick={onClick}
     >
-      Начать просмотр
+      {label}
     </Button>
-  );
-};
-
-const ModelSwitcher = ({ activeModel, setActiveModel }) => {
-  return (
-    <div className="flex bg-gray-100 p-1 rounded-2xl w-fit mx-auto mb-8">
-      <button
-        onClick={() => setActiveModel('canteen')}
-        className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'canteen'
-          ? 'bg-white text-black shadow-sm'
-          : 'text-gray-500 hover:text-black'
-          }`}
-      >
-        Столовая
-      </button>
-      <button
-        onClick={() => setActiveModel('darkKitchen')}
-        className={`px-6 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'darkKitchen'
-          ? 'bg-white text-black shadow-sm'
-          : 'text-gray-500 hover:text-black'
-          }`}
-      >
-        Дарк Китчен
-      </button>
-    </div>
   );
 };
 
 export default function App() {
   const [activeModel, setActiveModel] = useState('canteen');
+  // We need to access context, but useSlideshow is internal to Slideshow. 
+  // Actually, we can't use useSlideshow here because App is outside Slideshow.
+  // We need to pass the selection logic down or handle it inside the Slide 1 component.
 
   const dkEquipment = [
     { name: 'Ремонт помещения', value: '2,000 €' },
@@ -107,7 +87,6 @@ export default function App() {
     <div className="app">
       <Slideshow>
         {/* SLIDE 1: HERO */}
-        {/* SLIDE 1: HERO */}
         <Slide style={{ padding: 0, maxWidth: 'none', width: '100vw' }}>
           <div className="flex flex-col h-full w-full">
             {/* Top Image - Full Width */}
@@ -119,14 +98,41 @@ export default function App() {
             <div className="flex-1 flex flex-col justify-center px-8 md:px-16 text-left bg-white py-8">
               <div className="max-w-4xl">
                 <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 text-black leading-none tracking-tighter">
-                  <span className="font-poster text-6xl sm:text-7xl md:text-8xl">Вкусно</span> — <span className="text-[#059669]">Столовая</span>
+                  <span className="font-poster text-6xl sm:text-7xl md:text-8xl">Вкусно</span> — <span className="text-[#059669]">
+                    {activeModel === 'canteen' ? 'Столовая' : 'Дарк Китчен'}
+                  </span>
                 </h1>
                 <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-10 leading-snug max-w-xl">
-                  Открытие столовой русской кухни в Белграде. <br />
-                  Понятный бизнес. Высокий спрос.
+                  Выберите модель инвестирования для просмотра презентации:
                 </p>
-                <div>
-                  <StartButton />
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div
+                    onClick={() => { setActiveModel('canteen'); document.querySelector('.swiper-button-next')?.click(); }}
+                    className="cursor-pointer group p-6 rounded-2xl border-2 border-[#E5E7EB] hover:border-[#059669] transition-all bg-white hover:bg-green-50 w-full md:w-[320px]"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="p-2 bg-green-100 rounded-lg text-green-700"><ShoppingBag /></div>
+                      <h3 className="font-bold text-lg">Классическая Столовая</h3>
+                    </div>
+                    <p className="text-sm text-gray-500">Оффлайн зал + Доставка. <br />Проверенная модель.</p>
+                    <div className="mt-4 font-bold text-[#059669] group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                      Выбрать эту модель <ArrowRight width={16} />
+                    </div>
+                  </div>
+
+                  <div
+                    onClick={() => { setActiveModel('darkKitchen'); document.querySelector('.swiper-button-next')?.click(); }}
+                    className="cursor-pointer group p-6 rounded-2xl border-2 border-[#E5E7EB] hover:border-[#333] transition-all bg-white hover:bg-gray-50 w-full md:w-[320px]"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="p-2 bg-gray-200 rounded-lg text-black"><Rocket /></div>
+                      <h3 className="font-bold text-lg">Dark Kitchen</h3>
+                    </div>
+                    <p className="text-sm text-gray-500">Только доставка (Wolt/Glovo). <br />Быстрый запуск.</p>
+                    <div className="mt-4 font-bold text-black group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                      Выбрать эту модель <ArrowRight width={16} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,18 +140,23 @@ export default function App() {
         </Slide>
 
         {/* SLIDE 2: IDEA & SCALE */}
-        <Slide title="Концепция и Рынок" className="bg-[#059669] text-white">
+        <Slide title={activeModel === 'canteen' ? "Концепция и Рынок" : "Концепция Dark Kitchen"} className={activeModel === 'canteen' ? "bg-[#059669] text-white" : "bg-[#1f2937] text-white"}>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-full">
             {/* Concept Card - Large */}
             <div className="col-span-1 md:col-span-8 p-8 rounded-3xl bg-white text-black flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-gray-100 rounded-full"><ShoppingBag style={{ width: 24, height: 24 }} /></div>
-                  <h3 className="text-2xl font-bold">Фри-фло Столовая</h3>
+                  <div className="p-3 bg-gray-100 rounded-full">
+                    {activeModel === 'canteen' ? <ShoppingBag style={{ width: 24, height: 24 }} /> : <Rocket style={{ width: 24, height: 24 }} />}
+                  </div>
+                  <h3 className="text-2xl font-bold">
+                    {activeModel === 'canteen' ? 'Фри-фло Столовая' : 'Фабрика-кухня (Delivery Only)'}
+                  </h3>
                 </div>
                 <p className="text-xl leading-snug mb-6 text-gray-800">
-                  Современный формат: вкусная домашняя еда, высокая скорость обслуживания и честные цены.
-                  Никакого ожидания официантов.
+                  {activeModel === 'canteen'
+                    ? 'Современный формат: вкусная домашняя еда, высокая скорость обслуживания и честные цены. Никакого ожидания официантов.'
+                    : 'Оптимизированное производство для работы с агрегаторами (Wolt, Glovo). Минимальная аренда, фокус на скорость и качество упаковки.'}
                 </p>
               </div>
               <div className="flex gap-4">
@@ -155,11 +166,11 @@ export default function App() {
                 </div>
                 <div className="bg-gray-50 p-4 rounded-xl flex-1">
                   <div className="text-sm opacity-70 mb-1">Средний чек</div>
-                  <div className="font-bold text-lg">7 - 9 €</div>
+                  <div className="font-bold text-lg">{activeModel === 'canteen' ? '7 - 9 €' : '10 - 12 €'}</div>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-xl flex-1">
                   <div className="text-sm opacity-70 mb-1">Время</div>
-                  <div className="font-bold text-lg">3 мин</div>
+                  <div className="font-bold text-lg">{activeModel === 'canteen' ? '3 мин' : '15 мин (дост)'}</div>
                 </div>
               </div>
             </div>
@@ -249,7 +260,6 @@ export default function App() {
         </Slide>
 
         <Slide title="Структура инвестиций">
-          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 h-full">
             {/* Chart Area */}
             <div className="col-span-1 md:col-span-5 bg-gray-50 rounded-3xl p-4">
@@ -278,8 +288,7 @@ export default function App() {
         </Slide>
 
         {/* SLIDE 5: MONTHLY EXPENSES */}
-        <Slide title="Операционные расходы" className="bg-[#059669] text-white">
-          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
+        <Slide title="Операционные расходы" className={activeModel === 'canteen' ? "bg-[#059669] text-white" : "bg-[#1f2937] text-white"}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 h-full">
 
             {/* Team Block */}
@@ -335,7 +344,6 @@ export default function App() {
 
         {/* SLIDE 6: FINANCIAL MODEL */}
         <Slide title="Финансовая модель">
-          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
           <div className="flex flex-col h-full gap-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-gray-50 p-6 rounded-3xl">
@@ -381,7 +389,6 @@ export default function App() {
 
         {/* SLIDE 7: INVESTMENT SUM */}
         <Slide title="Инвестиционное предложение">
-          <ModelSwitcher activeModel={activeModel} setActiveModel={setActiveModel} />
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
             <div style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#666' }}>Необходимая сумма инвестиций</div>
             <div className="text-6xl md:text-8xl font-bold text-[#059669] mb-8 md:mb-12">
