@@ -154,16 +154,6 @@ export const Slideshow = ({ children }) => {
                 </div>
 
                 {/* Hint */}
-                {currentSlide === 0 && (
-                    <div className="right-4 md:right-8 bottom-4 md:bottom-8" style={{
-                        position: 'absolute',
-                        color: '#aaa',
-                        zIndex: 50,
-                        fontSize: '0.9rem'
-                    }}>
-                        Используйте стрелки или кликайте по краям
-                    </div>
-                )}
             </div>
         </SlideshowContext.Provider>
     );

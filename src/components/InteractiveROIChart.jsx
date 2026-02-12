@@ -4,14 +4,14 @@ import Card from './Card';
 
 const modelsData = {
     canteen: {
-        investment: 42930,
-        monthlyProfit: 9650, // Updated: Reduced fixed costs by 1300
+        investment: 80000,
+        monthlyProfit: 9150, // Reduced by 500 due to Director salary increase
         initialBurn: [-2000, -500, 0]
     },
     darkKitchen: {
-        investment: 28080,
-        monthlyProfit: 6500, // Assumed target profit
-        initialBurn: [-2500, -1000, 0] // Assumed slightly higher burn due to delivery-only launch
+        investment: 80000,
+        monthlyProfit: 6000, // Reduced by 500 due to Director salary increase
+        initialBurn: [-2500, -1000, 0]
     }
 };
 

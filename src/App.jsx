@@ -30,64 +30,82 @@ export default function App() {
   // Actually, we can't use useSlideshow here because App is outside Slideshow.
   // We need to pass the selection logic down or handle it inside the Slide 1 component.
 
-  /* Dark Kitchen Data Updates
-     Ventilation: 2,500
-     Cushion: 15,000 (approx 2 months)
-     Total: ~28,080
+  /* Dark Kitchen Data Updates (Target ~80k)
+     Reform: 6,000
+     Equipment: 15,000
+     Ventilation: 8,000
+     Car/Deliv: 12,000
+     Office/Inv: 4,000
+     Cushion: 35,000
+     Total: 80,000
   */
   const dkEquipment = [
-    { name: 'Ремонт помещения', value: '2,000 €' },
-    { name: 'Оборудование (Кухня + Хранение)', value: '3,730 €' },
-    { name: 'Вентиляция и рабочая зона', value: '2,500 €' },
-    { name: 'Машина + Доставка', value: '4,600 €' },
-    { name: 'Офис + Инвентарь', value: '250 €' },
-    { name: 'Подушка (2 мес)', value: '15,000 €', highlight: true }
+    { name: 'Ремонт помещения', value: '3,000 €' },
+    { name: 'Оборудование (Кухня + Хранение)', value: '8,000 €' },
+    { name: 'Вентиляция и рабочая зона', value: '4,000 €' },
+    { name: 'Машина + Доставка', value: '6,000 €' },
+    { name: 'Офис + Инвентарь', value: '2,000 €' },
+    { name: 'Подушка (Безопасность)', value: '17,000 €', highlight: true }
   ];
 
+  /* Canteen Data Updates (Target ~80k)
+     Equip: 25,000
+     Vent/Hall: 12,000
+     Repair: 10,000
+     Car: 8,000
+     Marketing: 5,000
+     Cushion: 20,000
+     Total: 80,000
+  */
   const canteenEquipment = [
-    { name: 'Оборудование', value: '9,830 €' },
-    { name: 'Вентиляция и зал', value: '5,400 €' },
-    { name: 'Ремонт / Мебель', value: '3,500 €' },
+    { name: 'Оборудование (Линия + Кухня)', value: '15,000 €' },
+    { name: 'Вентиляция и зал', value: '6,000 €' },
+    { name: 'Ремонт / Мебель', value: '5,000 €' },
     { name: 'Машина / Авто', value: '4,000 €' },
-    { name: 'Маркетинг + Док.', value: '1,100 €' },
-    { name: 'Подушка (3 мес)', value: '21,100 €', highlight: true }
+    { name: 'Маркетинг + Док.', value: '2,500 €' },
+    { name: 'Подушка (3 мес)', value: '7,500 €', highlight: true }
   ];
 
   const dkOpex = {
     team: [
       { name: 'Повар', value: '1,000 €', icon: <Star /> },
-      { name: 'Управляющий', value: '1,500 €', icon: <ShieldCheck /> },
+      { name: 'Управляющий', value: '2,000 €', icon: <ShieldCheck /> },
       { name: 'Водитель / Уборщица', value: '1,200 €', icon: <Flame /> },
       { name: 'Менеджеры (Менеджмент)', value: '600 €', icon: <Person /> },
+      { name: 'Бухгалтер', value: '300 €', icon: <ChartBar /> },
+      { name: 'Тех менеджер', value: '400 €', icon: <Rocket /> },
     ],
     fixed: [
       { name: 'Аренда', value: '1,000 €', icon: <MapPin /> },
       { name: 'Реклама + Таргет', value: '1,000 €', icon: <Smartphone /> },
       { name: 'Налоги + Касса + Комм.', value: '1,200 €', icon: <Diamond /> },
     ],
-    totalTeam: '~4,300 €',
+    totalTeam: '~5,500 €',
     totalFixed: '~3,200 €'
   };
 
   const canteenOpex = {
     team: [
       { name: 'Повара (2 чел)', value: '2,000 €', icon: <Star /> },
-      { name: 'Управляющий', value: '1,500 €', icon: <ShieldCheck /> },
-      { name: 'Кассир', value: '800 €', icon: <ShoppingBag /> },
+      { name: 'Управляющий', value: '2,000 €', icon: <ShieldCheck /> },
+      { name: 'Кассиры (2 чел)', value: '1,600 €', icon: <ShoppingBag /> },
+      { name: 'Раздача еды (2 чел)', value: '1,600 €', icon: <Person /> },
       { name: 'Уборка / Водитель', value: '1,200 €', icon: <Flame /> },
+      { name: 'Бухгалтер', value: '300 €', icon: <ChartBar /> },
+      { name: 'Тех менеджер', value: '400 €', icon: <Rocket /> },
     ],
     fixed: [
       { name: 'Аренда помещения', value: '1,200 €', icon: <MapPin /> },
       { name: 'Коммуналка', value: '500 €', icon: <Diamond /> },
       { name: 'Маркетинг', value: '1,000 €', icon: <Smartphone /> },
     ],
-    totalTeam: '~5,500 €',
+    totalTeam: '~9,100 €',
     totalFixed: '~2,700 €'
   };
 
   const opexData = activeModel === 'canteen' ? canteenOpex : dkOpex;
   const equipData = activeModel === 'canteen' ? canteenEquipment : dkEquipment;
-  const totalInvest = activeModel === 'canteen' ? '42,930 €' : '28,080 €';
+  const totalInvest = activeModel === 'canteen' ? '40,000 €' : '40,000 €';
   return (
     <div className="app">
       <Slideshow>
