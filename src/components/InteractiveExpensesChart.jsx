@@ -55,8 +55,8 @@ const InteractiveExpensesChart = ({ model = 'canteen' }) => {
                 </ResponsiveContainer>
 
                 {/* Overlay for perfect centering */}
-                <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none" style={{ marginTop: '-20px' }}>
-                    <span className="text-xl md:text-2xl font-bold text-black leading-none">
+                <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-[calc(50%+25px)] flex flex-col items-center justify-center pointer-events-none">
+                    <span className="text-xl md:text-3xl font-bold text-black leading-none">
                         {total.toLocaleString()} €
                     </span>
                     <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">всего</span>
