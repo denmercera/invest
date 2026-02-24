@@ -28,17 +28,18 @@ const InteractiveExpensesChart = ({ model = 'canteen' }) => {
     return (
         <Card className="h-full flex flex-col">
             <h3 className="mb-4">Структура инвестиций (~ {total.toLocaleString()} €)</h3>
-            <div className="h-[300px] md:h-[400px] w-full relative">
+            <div className="h-[300px] md:h-[400px] w-full relative flex items-center justify-center">
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                         <Pie
                             data={data}
                             cx="50%"
-                            cy="45%"
+                            cy="50%"
                             innerRadius={70}
                             outerRadius={100}
                             paddingAngle={5}
                             dataKey="value"
+                            stroke="none"
                         >
                             {data.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={entry.color} />
@@ -48,19 +49,18 @@ const InteractiveExpensesChart = ({ model = 'canteen' }) => {
                         <Legend
                             verticalAlign="bottom"
                             align="center"
-                            wrapperStyle={{ paddingTop: '20px' }}
+                            iconType="circle"
                         />
-                        <text
-                            x="50%"
-                            y="45%"
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            style={{ fontSize: '20px', fontWeight: 'bold' }}
-                        >
-                            {total.toLocaleString()} €
-                        </text>
                     </PieChart>
                 </ResponsiveContainer>
+
+                {/* Overlay for perfect centering */}
+                <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none" style={{ marginTop: '-20px' }}>
+                    <span className="text-xl md:text-2xl font-bold text-black leading-none">
+                        {total.toLocaleString()} €
+                    </span>
+                    <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold mt-1">всего</span>
+                </div>
             </div>
             <p className="text-center text-sm text-gray-500 mt-2">
                 Включает подушку безопасности на 3 месяца (Зарплата + Аренда) * 3 + {model === 'canteen' ? '1000' : '0'} € на непредвиденные расходы.
