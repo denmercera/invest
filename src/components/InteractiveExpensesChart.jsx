@@ -28,14 +28,14 @@ const InteractiveExpensesChart = ({ model = 'canteen' }) => {
     return (
         <Card className="h-full flex flex-col">
             <h3 className="mb-4">Структура инвестиций (~ {total.toLocaleString()} €)</h3>
-            <div className="h-[250px] md:h-[350px] w-full">
+            <div className="h-[300px] md:h-[400px] w-full relative">
                 <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
                         <Pie
                             data={data}
                             cx="50%"
-                            cy="50%"
-                            innerRadius={60}
+                            cy="45%"
+                            innerRadius={70}
                             outerRadius={100}
                             paddingAngle={5}
                             dataKey="value"
@@ -45,8 +45,18 @@ const InteractiveExpensesChart = ({ model = 'canteen' }) => {
                             ))}
                         </Pie>
                         <Tooltip formatter={(value) => `${value.toLocaleString()} €`} />
-                        <Legend iconType="circle" />
-                        <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" style={{ fontSize: '18px', fontWeight: 'bold' }}>
+                        <Legend
+                            verticalAlign="bottom"
+                            align="center"
+                            wrapperStyle={{ paddingTop: '20px' }}
+                        />
+                        <text
+                            x="50%"
+                            y="45%"
+                            textAnchor="middle"
+                            dominantBaseline="middle"
+                            style={{ fontSize: '20px', fontWeight: 'bold' }}
+                        >
                             {total.toLocaleString()} €
                         </text>
                     </PieChart>
