@@ -51,7 +51,9 @@ body {
 }
 
 .slide-content {
-  padding: 5rem 1.5rem 1.5rem 1.5rem;
+  padding: 5rem 1.5rem 6rem 1.5rem;
+  /* Increased bottom padding to clear counter and browser UI */
+  padding-bottom: calc(6rem + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 768px) {

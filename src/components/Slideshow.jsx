@@ -142,7 +142,9 @@ export const Slideshow = ({ children, extraContent }) => {
                     color: '#888',
                     fontWeight: 'bold',
                     fontSize: '1.2rem',
-                    zIndex: 50
+                    zIndex: 20, /* lowered to stay behind nav arrows but visible */
+                    paddingBottom: 'env(safe-area-inset-bottom)',
+                    marginBottom: '0.5rem'
                 }}>
                     {currentSlide + 1} <span style={{ opacity: 0.5, fontSize: '0.9rem' }}>/ {slides.length}</span>
                 </div>
