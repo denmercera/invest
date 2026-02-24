@@ -45,12 +45,7 @@ export const Slideshow = ({ children, extraContent }) => {
 
                 {/* Logo Global */}
                 {currentSlide !== 0 && (
-                    <div className="font-poster" style={{
-                        position: 'absolute',
-                        top: '20px',
-                        left: '20px',
-                        zIndex: 100,
-                        fontSize: '1.5rem',
+                    <div className="font-poster fixed top-4 left-4 md:top-6 md:left-8 z-[100] text-3xl" style={{
                         color: (currentSlide === 1 || currentSlide === 4) ? 'white' : '#059669',
                         pointerEvents: 'none',
                         transition: 'color 0.5s ease'
@@ -89,7 +84,7 @@ export const Slideshow = ({ children, extraContent }) => {
                 {/* Navigation Buttons */}
                 <button
                     onClick={prevSlide}
-                    className="nav-btn-prev left-4 md:left-8"
+                    className="nav-btn-prev left-2 md:left-8 w-10 h-10 md:w-12 md:h-12"
                     style={{
                         position: 'absolute',
                         top: '50%',
@@ -98,8 +93,6 @@ export const Slideshow = ({ children, extraContent }) => {
                         backgroundColor: 'black',
                         border: 'none',
                         borderRadius: '50%',
-                        width: '48px',
-                        height: '48px',
                         display: currentSlide === 0 ? 'none' : 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -118,7 +111,7 @@ export const Slideshow = ({ children, extraContent }) => {
 
                 <button
                     onClick={nextSlide}
-                    className="nav-btn-next right-4 md:right-8"
+                    className="nav-btn-next right-2 md:right-8 w-10 h-10 md:w-12 md:h-12"
                     style={{
                         position: 'absolute',
                         top: '50%',
@@ -127,8 +120,6 @@ export const Slideshow = ({ children, extraContent }) => {
                         backgroundColor: 'black',
                         border: 'none',
                         borderRadius: '50%',
-                        width: '48px',
-                        height: '48px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',

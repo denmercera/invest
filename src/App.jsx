@@ -5,7 +5,7 @@ import BusinessModel from './components/BusinessModel';
 import { Slideshow, Slide, useSlideshow } from './components/Slideshow';
 import InteractiveROIChart from './components/InteractiveROIChart';
 import InteractiveExpensesChart from './components/InteractiveExpensesChart';
-import { ArrowRight, Star, ChartBar, Target, Person, ShieldCheck, Envelope, Smartphone, Check, ShoppingBag, MapPin, LayoutList, Diamond, Display, Rocket, Flame, ShieldExclamation } from '@gravity-ui/icons';
+import { ArrowRight, Star, ChartBar, Target, Person, ShieldCheck, Envelope, Smartphone, Check, ShoppingBag, MapPin, LayoutList, Diamond, Display, Rocket, Flame, ShieldExclamation, CreditCard, Clock } from '@gravity-ui/icons';
 import bgImage from './assets/bg.png';
 
 const HeroSlide = ({ activeModel, setActiveModel }) => {
@@ -20,53 +20,53 @@ const HeroSlide = ({ activeModel, setActiveModel }) => {
     <Slide style={{ padding: 0, maxWidth: 'none', width: '100vw' }}>
       <div className="flex flex-col md:flex-row h-full w-full">
         {/* Left Side: Content */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-20 bg-white py-12">
+        <div className="w-full md:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-20 bg-white pt-24 pb-8 md:py-12 flex-1">
           <div className="max-w-xl">
-            <h1 className="font-poster text-7xl sm:text-8xl md:text-9xl mb-2 text-black leading-none">
+            <h1 className="font-poster text-6xl sm:text-7xl md:text-9xl mb-1 md:mb-2 text-black leading-none">
               Вкусно
             </h1>
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 font-medium tracking-tight">
+            <p className="text-lg md:text-2xl text-gray-400 mb-8 md:mb-12 font-medium tracking-tight leading-snug">
               Инвестиционное предложение 2026
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div
                 onClick={() => handleSelect('darkKitchen')}
-                className={`cursor-pointer group p-8 rounded-[32px] border-2 transition-all flex items-center justify-between ${activeModel === 'darkKitchen' ? 'border-black bg-gray-50' : 'border-gray-100 hover:border-gray-300 bg-white'}`}
+                className={`cursor-pointer group p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-[32px] border-2 transition-all flex items-center justify-between ${activeModel === 'darkKitchen' ? 'border-black bg-gray-50' : 'border-gray-100 hover:border-gray-300 bg-white'}`}
               >
-                <div className="flex items-center gap-6">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors ${activeModel === 'darkKitchen' ? 'bg-black text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-black group-hover:text-white'}`}>
-                    <Rocket style={{ width: 32, height: 32 }} />
+                <div className="flex items-center gap-4 md:gap-6">
+                  <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center transition-colors ${activeModel === 'darkKitchen' ? 'bg-black text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-black group-hover:text-white'}`}>
+                    <Rocket className="w-6 h-6 md:w-8 md:h-8" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-2xl mb-1">Dark Kitchen</h3>
-                    <p className="text-gray-500">Только доставка. Быстрый запуск.</p>
+                    <h3 className="font-bold text-xl md:text-2xl mb-1">Dark Kitchen</h3>
+                    <p className="text-sm md:text-base text-gray-500">Только доставка. Быстрый запуск.</p>
                   </div>
                 </div>
-                <ArrowRight className={`transition-all ${activeModel === 'darkKitchen' ? 'opacity-100 translate-x-2' : 'opacity-0'}`} />
+                <ArrowRight className={`transition-all ${activeModel === 'darkKitchen' ? 'opacity-100 translate-x-1 md:translate-x-2' : 'opacity-0'}`} />
               </div>
 
               <div
                 onClick={() => handleSelect('canteen')}
-                className={`cursor-pointer group p-8 rounded-[32px] border-2 transition-all flex items-center justify-between ${activeModel === 'canteen' ? 'border-[#059669] bg-green-50' : 'border-gray-100 hover:border-gray-300 bg-white'}`}
+                className={`cursor-pointer group p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-[32px] border-2 transition-all flex items-center justify-between ${activeModel === 'canteen' ? 'border-[#059669] bg-green-50' : 'border-gray-100 hover:border-gray-300 bg-white'}`}
               >
-                <div className="flex items-center gap-6">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors ${activeModel === 'canteen' ? 'bg-[#059669] text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-[#059669] group-hover:text-white'}`}>
-                    <ShoppingBag style={{ width: 32, height: 32 }} />
+                <div className="flex items-center gap-4 md:gap-6">
+                  <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center transition-colors ${activeModel === 'canteen' ? 'bg-[#059669] text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-[#059669] group-hover:text-white'}`}>
+                    <ShoppingBag className="w-6 h-6 md:w-8 md:h-8" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-2xl mb-1">Столовая</h3>
-                    <p className="text-gray-500">Оффлайн зал + Доставка.</p>
+                    <h3 className="font-bold text-xl md:text-2xl mb-1">Столовая</h3>
+                    <p className="text-sm md:text-base text-gray-500">Оффлайн зал + Доставка.</p>
                   </div>
                 </div>
-                <ArrowRight className={`transition-all text-[#059669] ${activeModel === 'canteen' ? 'opacity-100 translate-x-2' : 'opacity-0'}`} />
+                <ArrowRight className={`transition-all text-[#059669] ${activeModel === 'canteen' ? 'opacity-100 translate-x-1 md:translate-x-2' : 'opacity-0'}`} />
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Side: Image */}
-        <div className="w-full md:w-1/2 h-[40vh] md:h-full overflow-hidden">
+        <div className="w-full md:w-1/2 h-[35vh] sm:h-[40vh] md:h-full overflow-hidden shrink-0">
           <img
             src="/slide1.PNG"
             alt="Вкусно"
@@ -84,23 +84,22 @@ const ModelToggle = ({ activeModel, setActiveModel }) => {
   if (currentSlide === 0) return null;
 
   return (
-    <div className="fixed top-6 right-20 z-[100] bg-white/80 backdrop-blur-md p-1 rounded-2xl border border-gray-100 shadow-xl flex gap-1">
+    <div className="fixed top-4 right-4 md:top-6 md:right-8 z-[100] bg-white/90 backdrop-blur-md p-1 rounded-2xl border border-gray-200 shadow-xl flex gap-1">
       <button
         onClick={() => setActiveModel('darkKitchen')}
-        className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'darkKitchen' ? 'bg-black text-white' : 'text-gray-500 hover:bg-gray-100'}`}
+        className={`px-3 py-2 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold transition-all ${activeModel === 'darkKitchen' ? 'bg-black text-white shadow-sm' : 'text-gray-500 hover:bg-gray-100'}`}
       >
         Dark Kitchen
       </button>
       <button
         onClick={() => setActiveModel('canteen')}
-        className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'canteen' ? 'bg-[#059669] text-white' : 'text-gray-500 hover:bg-gray-100'}`}
+        className={`px-3 py-2 md:px-4 md:py-2 rounded-xl text-xs md:text-sm font-bold transition-all ${activeModel === 'canteen' ? 'bg-[#059669] text-white shadow-sm' : 'text-gray-500 hover:bg-gray-100'}`}
       >
         Столовая
       </button>
     </div>
   );
 };
-
 
 export default function App() {
   const [activeModel, setActiveModel] = useState('canteen');
@@ -210,66 +209,97 @@ export default function App() {
                     : 'Оптимизированное производство для работы с агрегаторами (Wolt, Glovo) и собственной доставки в офисы/на дом.'}
                 </p>
               </div>
-              <div className="flex gap-4">
-                <div className="bg-gray-50 p-4 rounded-xl flex-1">
-                  <div className="text-sm opacity-70 mb-1">Кухня</div>
-                  <div className="font-bold text-lg">Русская / Домашняя</div>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-xl flex-1">
-                  <div className="text-sm opacity-70 mb-1">Средний чек</div>
-                  <div className="font-bold text-lg">{activeModel === 'canteen' ? '7 - 9 €' : '10 - 12 €'}</div>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-xl flex-1">
-                  <div className="text-sm opacity-70 mb-1">Время</div>
-                  <div className="font-bold text-lg">{activeModel === 'canteen' ? '3 мин' : '15 мин (дост)'}</div>
-                </div>
-              </div>
-            </div>
+              <div className="flex flex-col h-full gap-4 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 flex-1">
+                  <div className="bg-white/10 p-5 sm:p-6 md:p-8 rounded-[32px] flex flex-col justify-center backdrop-blur-sm">
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-6">Почему {activeModel === 'canteen' ? 'Фри-фло Столовая' : 'Dark Kitchen'}?</h3>
+                    <ul className="space-y-3 md:space-y-4 text-base md:text-lg">
+                      <li className="flex items-start gap-3">
+                        <div className="p-2 bg-white/20 rounded-full shrink-0 mt-1">
+                          {activeModel === 'canteen' ? <ShoppingBag style={{ width: 20, height: 20 }} /> : <Rocket style={{ width: 20, height: 20 }} />}
+                        </div>
+                        <div>
+                          <span className="font-bold">
+                            {activeModel === 'canteen' ? 'Современный формат:' : 'Оптимизированное производство:'}
+                          </span>
+                          {' '}
+                          {activeModel === 'canteen'
+                            ? 'вкусная домашняя еда, высокая скорость обслуживания и честные цены. Никакого ожидания официантов.'
+                            : 'для работы с агрегаторами (Wolt, Glovo) и собственной доставки в офисы/на дом.'}
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="p-2 bg-white/20 rounded-full shrink-0 mt-1">
+                          <Star style={{ width: 20, height: 20 }} />
+                        </div>
+                        <div>
+                          <span className="font-bold">Кухня:</span> Русская / Домашняя.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="p-2 bg-white/20 rounded-full shrink-0 mt-1">
+                          <CreditCard style={{ width: 20, height: 20 }} />
+                        </div>
+                        <div>
+                          <span className="font-bold">Средний чек:</span> {activeModel === 'canteen' ? '7 - 9 €' : '10 - 12 €'}.
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <div className="p-2 bg-white/20 rounded-full shrink-0 mt-1">
+                          <Clock style={{ width: 20, height: 20 }} />
+                        </div>
+                        <div>
+                          <span className="font-bold">Время обслуживания:</span> {activeModel === 'canteen' ? '3 мин' : '15 мин (доставка)'}.
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
 
-            {/* Target Audience - Vertical */}
-            <div className="col-span-1 md:col-span-4 p-8 rounded-3xl bg-white text-black flex flex-col justify-between">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <Person style={{ width: 20 }} /> Целевая аудитория
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black font-bold text-xs">ИТ</div>
-                  <div>
-                    <div className="font-bold">ИТ-специалисты</div>
-                    <div className="text-xs text-gray-500">Белград (100к+)</div>
+                  <div className="bg-white/10 p-5 sm:p-6 md:p-8 rounded-[32px] flex flex-col justify-center backdrop-blur-sm">
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-6">Рынок Нарвы</h3>
+                    <div className="space-y-3 md:space-y-6">
+                      <div className="flex items-center gap-3 p-3 bg-white/20 rounded-xl">
+                        <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center text-white font-bold text-xs">ИТ</div>
+                        <div>
+                          <div className="font-bold">ИТ-специалисты</div>
+                          <div className="text-xs text-gray-200">Белград (100к+)</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 p-3 bg-white/20 rounded-xl">
+                        <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center font-bold text-white"><Person /></div>
+                        <div>
+                          <div className="font-bold">Простые обыватели</div>
+                          <div className="text-xs text-gray-200">Мужчины и женщины</div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 p-3 bg-white/20 rounded-xl">
+                        <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center font-bold text-white"><ShoppingBag /></div>
+                        <div>
+                          <div className="font-bold">На вынос / Домой</div>
+                          <div className="text-xs text-gray-200">Wolt / Glovo / С собой</div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-black"><Person /></div>
-                  <div>
-                    <div className="font-bold">Простые обыватели</div>
-                    <div className="text-xs text-gray-500">Мужчины и женщины</div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 shrink-0">
+                  <div className="p-5 sm:p-6 md:p-8 rounded-[32px] bg-white/10 text-white flex items-center gap-4 backdrop-blur-sm">
+                    <div className="p-3 bg-white/20 rounded-full text-white"><MapPin /></div>
+                    <div>
+                      <h4 className="font-bold text-lg">Локация</h4>
+                      <p className="text-sm opacity-80">Белград: Врачар или Новый Белград</p>
+                    </div>
+                  </div>
+
+                  <div className="p-5 sm:p-6 md:p-8 rounded-[32px] bg-white/10 text-white flex items-center gap-4 backdrop-blur-sm">
+                    <div className="p-3 bg-white/20 rounded-full text-white"><Check /></div>
+                    <div>
+                      <h4 className="font-bold text-lg">Старт проекта</h4>
+                      <p className="text-sm opacity-80">Февраль 2026 &rarr; Открытие Апрель 2026</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
-                  <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center font-bold text-black"><ShoppingBag /></div>
-                  <div>
-                    <div className="font-bold">На вынос / Домой</div>
-                    <div className="text-xs text-gray-500">Wolt / Glovo / С собой</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Location & Timeline - Bottom Row */}
-            <div className="col-span-1 md:col-span-6 p-6 rounded-3xl bg-white text-black flex items-center gap-4">
-              <div className="p-4 bg-gray-100 rounded-full text-black"><MapPin /></div>
-              <div>
-                <h4 className="font-bold text-lg">Локация</h4>
-                <p className="text-sm opacity-80">Белград: Врачар или Новый Белград</p>
-              </div>
-            </div>
-
-            <div className="col-span-1 md:col-span-6 p-6 rounded-3xl bg-white text-black flex items-center gap-4">
-              <div className="p-4 bg-gray-100 rounded-full text-black"><Check /></div>
-              <div>
-                <h4 className="font-bold text-lg">Старт проекта</h4>
-                <p className="text-sm opacity-80">Февраль 2026 &rarr; Открытие Апрель 2026</p>
               </div>
             </div>
           </div>
@@ -395,44 +425,44 @@ export default function App() {
 
         {/* SLIDE 6: FINANCIAL MODEL */}
         <Slide title="Финансовая модель">
-          <div className="flex flex-col h-full gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-gray-50 p-4 rounded-3xl border border-gray-100">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-2">
-                  {activeModel === 'canteen' ? <ShoppingBag width={20} /> : <Rocket width={20} />}
+          <div className="flex flex-col h-full gap-2 md:gap-4 overflow-y-auto pr-1 pb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4 shrink-0">
+              <div className="bg-gray-50 p-3 md:p-4 rounded-2xl border border-gray-100">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-1 md:mb-2">
+                  {activeModel === 'canteen' ? <ShoppingBag className="w-4 h-4 md:w-5 md:h-5" /> : <Rocket className="w-4 h-4 md:w-5 md:h-5" />}
                 </div>
-                <h4 className="text-lg font-bold mb-1">
+                <h4 className="text-base md:text-lg font-bold mb-1">
                   {activeModel === 'canteen' ? '1. Зал (Оффлайн)' : '1. Масштаб'}
                 </h4>
-                <div className="text-2xl font-bold text-gray-800 mb-1">
+                <div className="text-xl md:text-2xl font-bold text-gray-800 mb-0 md:mb-1">
                   {activeModel === 'canteen' ? '40 ' : '100% '}
-                  <span className="text-xs text-gray-400 font-normal">
+                  <span className="text-[10px] md:text-xs text-gray-400 font-normal">
                     {activeModel === 'canteen' ? 'чел/день' : 'Фокус на доставку'}
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 leading-tight">
+                <p className="text-[10px] md:text-xs text-gray-500 leading-tight">
                   {activeModel === 'canteen' ? 'Стационарный трафик. Русская кухня.' : 'Минимальная аренда — максимум кухни.'}
                 </p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-3xl border border-gray-100">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-2"><Smartphone width={20} /></div>
-                <h4 className="text-lg font-bold mb-1">2. Доставка</h4>
-                <div className="text-2xl font-bold text-gray-800 mb-1">
-                  {activeModel === 'canteen' ? '20' : '50'} <span className="text-xs text-gray-400 font-normal">зак/день</span>
+              <div className="bg-gray-50 p-3 md:p-4 rounded-2xl border border-gray-100">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-1 md:mb-2"><Smartphone className="w-4 h-4 md:w-5 md:h-5" /></div>
+                <h4 className="text-base md:text-lg font-bold mb-1">2. Доставка</h4>
+                <div className="text-xl md:text-2xl font-bold text-gray-800 mb-0 md:mb-1">
+                  {activeModel === 'canteen' ? '20' : '50'} <span className="text-[10px] md:text-xs text-gray-400 font-normal">зак/день</span>
                 </div>
-                <p className="text-xs text-gray-500 leading-tight">Wolt / Glovo. Обед на дом.</p>
+                <p className="text-[10px] md:text-xs text-gray-500 leading-tight">Wolt / Glovo. Обед на дом.</p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-3xl border border-gray-100">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-2"><LayoutList width={20} /></div>
-                <h4 className="text-lg font-bold mb-1">3. Питание компаний</h4>
-                <div className="text-2xl font-bold text-gray-800 mb-1">
-                  {activeModel === 'canteen' ? '50' : '80'} <span className="text-xs text-gray-400 font-normal">обедов</span>
+              <div className="bg-gray-50 p-3 md:p-4 rounded-2xl border border-gray-100">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-1 md:mb-2"><LayoutList className="w-4 h-4 md:w-5 md:h-5" /></div>
+                <h4 className="text-base md:text-lg font-bold mb-1">3. Питание компаний</h4>
+                <div className="text-xl md:text-2xl font-bold text-gray-800 mb-0 md:mb-1">
+                  {activeModel === 'canteen' ? '50' : '80'} <span className="text-[10px] md:text-xs text-gray-400 font-normal">обедов</span>
                 </div>
-                <p className="text-xs text-gray-500 leading-tight">Корпоративные контракты.</p>
+                <p className="text-[10px] md:text-xs text-gray-500 leading-tight">Корпоративные контракты.</p>
               </div>
             </div>
 
-            <div className="flex-1 bg-gray-50 rounded-3xl p-2 md:p-4 overflow-hidden min-h-[200px]">
+            <div className="flex-1 bg-gray-50 rounded-2xl p-2 md:p-4 min-h-[300px] shrink-0">
               <InteractiveROIChart model={activeModel} />
             </div>
           </div>
@@ -523,14 +553,14 @@ export default function App() {
 
         {/* SLIDE 9: VISUALS */}
         <Slide title="Атмосфера">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 h-full items-center">
-            <div className="h-[250px] md:h-[400px] bg-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 h-full items-center">
+            <div className="h-[200px] md:h-[400px] bg-gray-100 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <img src="/IMG_0143.JPG" alt="Интерьер 1" className="w-full h-full object-cover" />
             </div>
-            <div className="h-[250px] md:h-[400px] bg-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div className="h-[200px] md:h-[400px] bg-gray-100 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <img src="/IMG_0144.JPG" alt="Интерьер 2" className="w-full h-full object-cover" />
             </div>
-            <div className="h-[250px] md:h-[400px] bg-gray-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div className="h-[200px] md:h-[400px] bg-gray-100 rounded-2xl md:rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <img src="/IMG_0145.JPG" alt="Интерьер 3" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -539,35 +569,35 @@ export default function App() {
         {/* SLIDE 10: CONTACTS */}
         <Slide>
           <div className="text-center">
-            <h2 className="text-5xl md:text-7xl font-bold mb-4">Давайте обсудим?</h2>
-            <p className="text-xl md:text-2xl mb-8 md:mb-16 text-gray-600">
+            <h2 className="text-4xl md:text-7xl font-bold mb-4">Давайте обсудим?</h2>
+            <p className="text-lg md:text-2xl mb-8 md:mb-16 text-gray-600">
               Рынок свободен. Нужно занимать нишу сейчас.
             </p>
 
-            <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center mb-12 md:mb-16">
-              <div className="bg-gray-50 rounded-3xl p-8 w-full md:w-[300px] flex flex-col items-center">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4">
-                  <Envelope style={{ width: 32, height: 32 }} />
+            <div className="flex flex-col md:flex-row gap-4 md:gap-8 justify-center mb-10 md:mb-16">
+              <div className="bg-gray-50 rounded-3xl p-6 md:p-8 w-full md:w-[300px] flex flex-col items-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4">
+                  <Envelope className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
-                <div style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Телеграм</div>
-                <div style={{ color: 'var(--color-accent-main)', fontWeight: 'bold' }}>@vkusnoporus</div>
+                <div className="text-lg md:text-xl font-bold mb-1 md:mb-2">Телеграм</div>
+                <div className="text-[var(--color-accent-main)] font-bold">@vkusnoporus</div>
               </div>
-              <div className="bg-gray-50 rounded-3xl p-8 w-full md:w-[300px] flex flex-col items-center">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4">
-                  <Smartphone style={{ width: 32, height: 32 }} />
+              <div className="bg-gray-50 rounded-3xl p-6 md:p-8 w-full md:w-[300px] flex flex-col items-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4">
+                  <Smartphone className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
-                <div style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>Телефон</div>
-                <div style={{ color: 'var(--color-accent-main)', fontWeight: 'bold' }}>+381 61 681 9650</div>
+                <div className="text-lg md:text-xl font-bold mb-1 md:mb-2">Телефон</div>
+                <div className="text-[var(--color-accent-main)] font-bold">+381 61 681 9650</div>
               </div>
             </div>
 
             <div className="flex flex-col items-center gap-4">
-              <div className="w-24 h-24 bg-gray-100 rounded-full overflow-hidden flex items-center justify-center">
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-100 rounded-full overflow-hidden flex items-center justify-center">
                 <img src="/natalia.png" alt="Наталия Романова" className="w-full h-full object-cover" />
               </div>
-              <div style={{ color: '#1d1d1f', fontWeight: 'bold' }}>
+              <div className="text-[#1d1d1f] font-bold">
                 Наталия Романова<br />
-                <span style={{ color: '#888', fontWeight: 'normal' }}>Основатель проекта</span>
+                <span className="text-[#888] font-normal text-sm md:text-base">Основатель проекта</span>
               </div>
             </div>
           </div>
@@ -576,5 +606,3 @@ export default function App() {
     </div>
   );
 }
-
-
