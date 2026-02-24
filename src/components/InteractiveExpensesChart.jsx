@@ -4,18 +4,17 @@ import Card from './Card';
 
 const modelsData = {
     canteen: [
-        { name: 'Оборудование', value: 15000, color: '#0F5132' },
-        { name: 'Вентиляция и Зал', value: 6000, color: '#10B981' },
+        { name: 'Оборудование и кухня', value: 18000, color: '#0F5132' },
+        { name: 'Вытяжка и вентиляция', value: 6000, color: '#10B981' },
         { name: 'Ремонт и Мебель', value: 5000, color: '#059669' },
         { name: 'Авто/Транспорт', value: 4000, color: '#6EE7B7' },
-        { name: 'Маркетинг', value: 2500, color: '#D1FAE5' },
-        { name: 'Подушка (3 мес)', value: 7500, color: '#FFC107' },
+        { name: 'Подушка (Безопасность)', value: 7500, color: '#FFC107' },
     ],
     darkKitchen: [
         { name: 'Кухня (Оборудование)', value: 8000, color: '#0F5132' },
         { name: 'Вентиляция (Пром)', value: 4000, color: '#1F2937' },
         { name: 'Автопарк', value: 6000, color: '#374151' },
-        { name: 'Ремонт/Интерьер', value: 5000, color: '#9CA3AF' }, // 3k repair + 2k office
+        { name: 'Ремонт/Интерьер', value: 5000, color: '#9CA3AF' },
         { name: 'Подушка (Безопасность)', value: 17000, color: '#FFC107' },
     ]
 };

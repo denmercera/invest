@@ -6,7 +6,7 @@ export const SlideshowContext = createContext();
 
 export const useSlideshow = () => useContext(SlideshowContext);
 
-export const Slideshow = ({ children }) => {
+export const Slideshow = ({ children, extraContent }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const slides = React.Children.toArray(children);
 
@@ -40,6 +40,9 @@ export const Slideshow = ({ children }) => {
                 position: 'relative',
                 backgroundColor: 'transparent'
             }}>
+                {/* Extra Content (Global UI) */}
+                {extraContent}
+
                 {/* Logo Global */}
                 {currentSlide !== 0 && (
                     <div className="font-poster" style={{

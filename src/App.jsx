@@ -8,21 +8,99 @@ import InteractiveExpensesChart from './components/InteractiveExpensesChart';
 import { ArrowRight, Star, ChartBar, Target, Person, ShieldCheck, Envelope, Smartphone, Check, ShoppingBag, MapPin, LayoutList, Diamond, Display, Rocket, Flame, ShieldExclamation } from '@gravity-ui/icons';
 import bgImage from './assets/bg.png';
 
-// Button that uses the context to navigate
-const StartButton = ({ label, onClick, className, variant = 'primary' }) => {
+const HeroSlide = ({ activeModel, setActiveModel }) => {
+  const { nextSlide } = useSlideshow();
+
+  const handleSelect = (model) => {
+    setActiveModel(model);
+    setTimeout(() => nextSlide(), 10);
+  };
+
   return (
-    <Button
-      className={`px-6 py-4 text-lg md:text-xl w-full md:w-auto ${className}`}
-      style={{
-        backgroundColor: variant === 'primary' ? 'var(--color-accent-main)' : '#333',
-        color: 'white'
-      }}
-      onClick={onClick}
-    >
-      {label}
-    </Button>
+    <Slide style={{ padding: 0, maxWidth: 'none', width: '100vw' }}>
+      <div className="flex flex-col md:flex-row h-full w-full">
+        {/* Left Side: Content */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-20 bg-white py-12">
+          <div className="max-w-xl">
+            <h1 className="font-poster text-7xl sm:text-8xl md:text-9xl mb-2 text-black leading-none">
+              Вкусно
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-400 mb-12 font-medium tracking-tight">
+              Инвестиционное предложение 2026
+            </p>
+
+            <div className="space-y-4">
+              <div
+                onClick={() => handleSelect('darkKitchen')}
+                className={`cursor-pointer group p-8 rounded-[32px] border-2 transition-all flex items-center justify-between ${activeModel === 'darkKitchen' ? 'border-black bg-gray-50' : 'border-gray-100 hover:border-gray-300 bg-white'}`}
+              >
+                <div className="flex items-center gap-6">
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors ${activeModel === 'darkKitchen' ? 'bg-black text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-black group-hover:text-white'}`}>
+                    <Rocket style={{ width: 32, height: 32 }} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-2xl mb-1">Dark Kitchen</h3>
+                    <p className="text-gray-500">Только доставка. Быстрый запуск.</p>
+                  </div>
+                </div>
+                <ArrowRight className={`transition-all ${activeModel === 'darkKitchen' ? 'opacity-100 translate-x-2' : 'opacity-0'}`} />
+              </div>
+
+              <div
+                onClick={() => handleSelect('canteen')}
+                className={`cursor-pointer group p-8 rounded-[32px] border-2 transition-all flex items-center justify-between ${activeModel === 'canteen' ? 'border-[#059669] bg-green-50' : 'border-gray-100 hover:border-gray-300 bg-white'}`}
+              >
+                <div className="flex items-center gap-6">
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-colors ${activeModel === 'canteen' ? 'bg-[#059669] text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-[#059669] group-hover:text-white'}`}>
+                    <ShoppingBag style={{ width: 32, height: 32 }} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-2xl mb-1">Столовая</h3>
+                    <p className="text-gray-500">Оффлайн зал + Доставка.</p>
+                  </div>
+                </div>
+                <ArrowRight className={`transition-all text-[#059669] ${activeModel === 'canteen' ? 'opacity-100 translate-x-2' : 'opacity-0'}`} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side: Image */}
+        <div className="w-full md:w-1/2 h-[40vh] md:h-full overflow-hidden">
+          <img
+            src="/slide1.PNG"
+            alt="Вкусно"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </Slide>
   );
 };
+
+const ModelToggle = ({ activeModel, setActiveModel }) => {
+  const { currentSlide } = useSlideshow();
+
+  if (currentSlide === 0) return null;
+
+  return (
+    <div className="fixed top-6 right-20 z-[100] bg-white/80 backdrop-blur-md p-1 rounded-2xl border border-gray-100 shadow-xl flex gap-1">
+      <button
+        onClick={() => setActiveModel('darkKitchen')}
+        className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'darkKitchen' ? 'bg-black text-white' : 'text-gray-500 hover:bg-gray-100'}`}
+      >
+        Dark Kitchen
+      </button>
+      <button
+        onClick={() => setActiveModel('canteen')}
+        className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${activeModel === 'canteen' ? 'bg-[#059669] text-white' : 'text-gray-500 hover:bg-gray-100'}`}
+      >
+        Столовая
+      </button>
+    </div>
+  );
+};
+
 
 export default function App() {
   const [activeModel, setActiveModel] = useState('canteen');
@@ -58,12 +136,11 @@ export default function App() {
      Total: 80,000
   */
   const canteenEquipment = [
-    { name: 'Оборудование (Линия + Кухня)', value: '15,000 €' },
-    { name: 'Вентиляция и зал', value: '6,000 €' },
+    { name: 'Оборудование и кухня', value: '18,000 €' },
+    { name: 'Вытяжка и вентиляция', value: '6,000 €' },
     { name: 'Ремонт / Мебель', value: '5,000 €' },
     { name: 'Машина / Авто', value: '4,000 €' },
-    { name: 'Маркетинг + Док.', value: '2,500 €' },
-    { name: 'Подушка (3 мес)', value: '7,500 €', highlight: true }
+    { name: 'Подушка (Безопасность)', value: '7,500 €', highlight: true }
   ];
 
   const dkOpex = {
@@ -86,8 +163,8 @@ export default function App() {
 
   const canteenOpex = {
     team: [
-      { name: 'Повара (2 чел)', value: '2,000 €', icon: <Star /> },
-      { name: 'Управляющий', value: '2,000 €', icon: <ShieldCheck /> },
+      { name: 'Повара (3 чел)', value: '2,400 €', icon: <Star /> },
+      { name: 'Управляющий (шеф-повар)', value: '2,000 €', icon: <ShieldCheck /> },
       { name: 'Кассиры (2 чел)', value: '1,600 €', icon: <ShoppingBag /> },
       { name: 'Раздача еды (2 чел)', value: '1,600 €', icon: <Person /> },
       { name: 'Уборка / Водитель', value: '1,200 €', icon: <Flame /> },
@@ -99,68 +176,19 @@ export default function App() {
       { name: 'Коммуналка', value: '500 €', icon: <Diamond /> },
       { name: 'Маркетинг', value: '1,000 €', icon: <Smartphone /> },
     ],
-    totalTeam: '~9,100 €',
+    totalTeam: '~9,500 €',
     totalFixed: '~2,700 €'
   };
 
   const opexData = activeModel === 'canteen' ? canteenOpex : dkOpex;
   const equipData = activeModel === 'canteen' ? canteenEquipment : dkEquipment;
-  const totalInvest = activeModel === 'canteen' ? '40,000 €' : '40,000 €';
+  const totalInvest = activeModel === 'canteen' ? '40,500 €' : '40,000 €';
   return (
     <div className="app">
-      <Slideshow>
-        {/* SLIDE 1: HERO */}
-        <Slide style={{ padding: 0, maxWidth: 'none', width: '100vw' }}>
-          <div className="flex flex-col h-full w-full">
-            {/* Top Image - Full Width */}
-            <div className="w-full h-[30vh] md:h-[45%] overflow-hidden">
-              <img src="/slide1.PNG" alt="Вкусно" className="w-full h-full object-cover" />
-            </div>
-
-            {/* Content - shifted left */}
-            <div className="flex-1 flex flex-col justify-center px-8 md:px-16 text-left bg-white py-8">
-              <div className="max-w-4xl">
-                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 md:mb-6 text-black leading-none tracking-tighter">
-                  <span className="font-poster text-6xl sm:text-7xl md:text-8xl">Вкусно</span> — <span className="text-[#059669]">
-                    {activeModel === 'canteen' ? 'Столовая' : 'Дарк Китчен'}
-                  </span>
-                </h1>
-                <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-10 leading-snug max-w-xl">
-                  Выберите модель инвестирования для просмотра презентации:
-                </p>
-                <div className="flex flex-col md:flex-row gap-4">
-                  <div
-                    onClick={() => { setActiveModel('canteen'); document.querySelector('.swiper-button-next')?.click(); }}
-                    className="cursor-pointer group p-6 rounded-2xl border-2 border-[#E5E7EB] hover:border-[#059669] transition-all bg-white hover:bg-green-50 w-full md:w-[320px]"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 bg-green-100 rounded-lg text-green-700"><ShoppingBag /></div>
-                      <h3 className="font-bold text-lg">Классическая Столовая</h3>
-                    </div>
-                    <p className="text-sm text-gray-500">Оффлайн зал + Доставка. <br />Проверенная модель.</p>
-                    <div className="mt-4 font-bold text-[#059669] group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                      Выбрать эту модель <ArrowRight width={16} />
-                    </div>
-                  </div>
-
-                  <div
-                    onClick={() => { setActiveModel('darkKitchen'); document.querySelector('.swiper-button-next')?.click(); }}
-                    className="cursor-pointer group p-6 rounded-2xl border-2 border-[#E5E7EB] hover:border-[#333] transition-all bg-white hover:bg-gray-50 w-full md:w-[320px]"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 bg-gray-200 rounded-lg text-black"><Rocket /></div>
-                      <h3 className="font-bold text-lg">Dark Kitchen</h3>
-                    </div>
-                    <p className="text-sm text-gray-500">Только доставка (Wolt, Glovo + Своя). <br />Быстрый запуск.</p>
-                    <div className="mt-4 font-bold text-black group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                      Выбрать эту модель <ArrowRight width={16} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Slide>
+      <Slideshow
+        extraContent={<ModelToggle activeModel={activeModel} setActiveModel={setActiveModel} />}
+      >
+        <HeroSlide activeModel={activeModel} setActiveModel={setActiveModel} />
 
         {/* SLIDE 2: IDEA & SCALE */}
         <Slide title={activeModel === 'canteen' ? "Концепция и Рынок" : "Концепция Dark Kitchen"} className={activeModel === 'canteen' ? "bg-[#059669] text-white" : "bg-[#1f2937] text-white"}>
@@ -312,27 +340,27 @@ export default function App() {
 
         {/* SLIDE 5: MONTHLY EXPENSES */}
         <Slide title="Операционные расходы" className={activeModel === 'canteen' ? "bg-[#059669] text-white" : "bg-[#1f2937] text-white"}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 h-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
 
             {/* Team Block */}
-            <div className="bg-gray-50 text-black rounded-3xl p-8">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-2xl font-bold flex items-center gap-3">
+            <div className="bg-gray-50 text-black rounded-3xl p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold flex items-center gap-2">
                   <Person className="text-black" /> Команда
                 </h3>
                 <span className="px-3 py-1 bg-gray-100 text-black rounded-full text-sm font-bold">{opexData.totalTeam} / мес</span>
               </div>
 
-              <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-1 gap-2">
                 {opexData.team.map((member, idx) => (
-                  <div key={idx} className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black">
+                  <div key={idx} className="flex items-center justify-between p-3 bg-gray-50 rounded-2xl">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-black">
                         {member.icon}
                       </div>
-                      <span className="font-bold text-gray-700">{member.name}</span>
+                      <span className="font-bold text-gray-700 text-sm">{member.name}</span>
                     </div>
-                    <span className="font-bold">{member.value}</span>
+                    <span className="font-bold text-sm">{member.value}</span>
                   </div>
                 ))}
               </div>
@@ -367,44 +395,44 @@ export default function App() {
 
         {/* SLIDE 6: FINANCIAL MODEL */}
         <Slide title="Финансовая модель">
-          <div className="flex flex-col h-full gap-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-gray-50 p-6 rounded-3xl">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4">
-                  {activeModel === 'canteen' ? <ShoppingBag /> : <Rocket />}
+          <div className="flex flex-col h-full gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-gray-50 p-4 rounded-3xl border border-gray-100">
+                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-2">
+                  {activeModel === 'canteen' ? <ShoppingBag width={20} /> : <Rocket width={20} />}
                 </div>
-                <h4 className="text-xl font-bold mb-2">
+                <h4 className="text-lg font-bold mb-1">
                   {activeModel === 'canteen' ? '1. Зал (Оффлайн)' : '1. Масштаб'}
                 </h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">
+                <div className="text-2xl font-bold text-gray-800 mb-1">
                   {activeModel === 'canteen' ? '40 ' : '100% '}
-                  <span className="text-sm text-gray-400 font-normal">
+                  <span className="text-xs text-gray-400 font-normal">
                     {activeModel === 'canteen' ? 'чел/день' : 'Фокус на доставку'}
                   </span>
                 </div>
-                <p className="text-gray-500 leading-snug">
+                <p className="text-xs text-gray-500 leading-tight">
                   {activeModel === 'canteen' ? 'Стационарный трафик. Русская кухня.' : 'Минимальная аренда — максимум кухни.'}
                 </p>
               </div>
-              <div className="bg-gray-50 p-6 rounded-3xl">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><Smartphone /></div>
-                <h4 className="text-xl font-bold mb-2">2. Доставка</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">
-                  {activeModel === 'canteen' ? '20' : '50'} <span className="text-sm text-gray-400 font-normal">зак/день</span>
+              <div className="bg-gray-50 p-4 rounded-3xl border border-gray-100">
+                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-2"><Smartphone width={20} /></div>
+                <h4 className="text-lg font-bold mb-1">2. Доставка</h4>
+                <div className="text-2xl font-bold text-gray-800 mb-1">
+                  {activeModel === 'canteen' ? '20' : '50'} <span className="text-xs text-gray-400 font-normal">зак/день</span>
                 </div>
-                <p className="text-gray-500 leading-snug">Wolt / Glovo. Обед на дом.</p>
+                <p className="text-xs text-gray-500 leading-tight">Wolt / Glovo. Обед на дом.</p>
               </div>
-              <div className="bg-gray-50 p-6 rounded-3xl">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-black mb-4"><LayoutList /></div>
-                <h4 className="text-xl font-bold mb-2">3. Питание компаний</h4>
-                <div className="text-3xl font-bold text-gray-800 mb-2">
-                  {activeModel === 'canteen' ? '50' : '80'} <span className="text-sm text-gray-400 font-normal">обедов</span>
+              <div className="bg-gray-50 p-4 rounded-3xl border border-gray-100">
+                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-2"><LayoutList width={20} /></div>
+                <h4 className="text-lg font-bold mb-1">3. Питание компаний</h4>
+                <div className="text-2xl font-bold text-gray-800 mb-1">
+                  {activeModel === 'canteen' ? '50' : '80'} <span className="text-xs text-gray-400 font-normal">обедов</span>
                 </div>
-                <p className="text-gray-500 leading-snug">Корпоративные контракты.</p>
+                <p className="text-xs text-gray-500 leading-tight">Корпоративные контракты.</p>
               </div>
             </div>
 
-            <div className="h-[300px] md:flex-1 bg-gray-50 rounded-3xl p-4 overflow-hidden">
+            <div className="flex-1 bg-gray-50 rounded-3xl p-2 md:p-4 overflow-hidden min-h-[200px]">
               <InteractiveROIChart model={activeModel} />
             </div>
           </div>
