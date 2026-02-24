@@ -35,7 +35,7 @@ export const Slideshow = ({ children, extraContent }) => {
         <SlideshowContext.Provider value={{ currentSlide, nextSlide, prevSlide, goToSlide, totalSlides: slides.length }}>
             <div className="slideshow-container" style={{
                 width: '100vw',
-                height: '100vh',
+                height: '100dvh', // dynamic viewport height for mobile
                 overflow: 'hidden',
                 position: 'relative',
                 backgroundColor: 'transparent'
