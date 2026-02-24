@@ -4,7 +4,7 @@ import Card from './Card';
 
 const modelsData = {
     canteen: {
-        investment: 40500,
+        investment: 45200,
         monthlyProfit: 5500,
         initialBurn: [-2000, -500, 0]
     },

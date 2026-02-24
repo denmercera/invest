@@ -139,7 +139,7 @@ export default function App() {
     { name: 'Вытяжка и вентиляция', value: '6,000 €' },
     { name: 'Ремонт / Мебель', value: '5,000 €' },
     { name: 'Машина / Авто', value: '4,000 €' },
-    { name: 'Подушка (Безопасность)', value: '7,500 €', highlight: true }
+    { name: 'Подушка (Безопасность)', value: '12,200 €', highlight: true }
   ];
 
   const dkOpex = {
@@ -181,7 +181,7 @@ export default function App() {
 
   const opexData = activeModel === 'canteen' ? canteenOpex : dkOpex;
   const equipData = activeModel === 'canteen' ? canteenEquipment : dkEquipment;
-  const totalInvest = activeModel === 'canteen' ? '40,500 €' : '40,000 €';
+  const totalInvest = activeModel === 'canteen' ? '45,200 €' : '40,000 €';
   return (
     <div className="app">
       <Slideshow

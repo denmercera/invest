@@ -8,7 +8,7 @@ const modelsData = {
         { name: 'Вытяжка и вентиляция', value: 6000, color: '#10B981' },
         { name: 'Ремонт и Мебель', value: 5000, color: '#059669' },
         { name: 'Авто/Транспорт', value: 4000, color: '#6EE7B7' },
-        { name: 'Подушка (Безопасность)', value: 7500, color: '#FFC107' },
+        { name: 'Подушка (Безопасность)', value: 12200, color: '#FFC107' },
     ],
     darkKitchen: [
         { name: 'Кухня (Оборудование)', value: 8000, color: '#0F5132' },
