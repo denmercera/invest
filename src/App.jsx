@@ -118,11 +118,11 @@ export default function App() {
   */
   const dkEquipment = [
     { name: 'Ремонт помещения', value: '3,000 €' },
-    { name: 'Оборудование (Кухня + Хранение)', value: '8,000 €' },
-    { name: 'Вентиляция и рабочая зона', value: '4,000 €' },
-    { name: 'Машина + Доставка', value: '6,000 €' },
+    { name: 'Оборудование (кухня)', value: '8,000 €' },
+    { name: 'Вентиляция (пром)', value: '4,000 €' },
+    { name: 'Автопарк / Доставка', value: '6,000 €' },
     { name: 'Офис + Инвентарь', value: '2,000 €' },
-    { name: 'Подушка (Безопасность)', value: '17,000 €', highlight: true }
+    { name: 'Подушка (Безопасность) * 3 мес', value: '26,100 €', highlight: true }
   ];
 
   /* Canteen Data Updates (Target ~80k)
@@ -139,7 +139,7 @@ export default function App() {
     { name: 'Вытяжка и вентиляция', value: '6,000 €' },
     { name: 'Ремонт / Мебель', value: '5,000 €' },
     { name: 'Машина / Авто', value: '4,000 €' },
-    { name: 'Подушка (Безопасность)', value: '12,200 €', highlight: true }
+    { name: 'Подушка (Безопасность) * 3 мес', value: '36,600 €', highlight: true }
   ];
 
   const dkOpex = {
@@ -156,8 +156,8 @@ export default function App() {
       { name: 'Реклама + Таргет', value: '1,000 €', icon: <Smartphone /> },
       { name: 'Налоги + Касса + Комм.', value: '1,200 €', icon: <Diamond /> },
     ],
-    totalTeam: '~5,500 €',
-    totalFixed: '~3,200 €'
+    totalTeam: '5,500 €',
+    totalFixed: '3,200 €'
   };
 
   const canteenOpex = {
@@ -175,13 +175,13 @@ export default function App() {
       { name: 'Коммуналка', value: '500 €', icon: <Diamond /> },
       { name: 'Маркетинг', value: '1,000 €', icon: <Smartphone /> },
     ],
-    totalTeam: '~9,500 €',
-    totalFixed: '~2,700 €'
+    totalTeam: '9,500 €',
+    totalFixed: '2,700 €'
   };
 
   const opexData = activeModel === 'canteen' ? canteenOpex : dkOpex;
   const equipData = activeModel === 'canteen' ? canteenEquipment : dkEquipment;
-  const totalInvest = activeModel === 'canteen' ? '45,200 €' : '40,000 €';
+  const totalInvest = activeModel === 'canteen' ? '69,600 €' : '49,100 €';
   return (
     <div className="app">
       <Slideshow
@@ -193,7 +193,7 @@ export default function App() {
         <Slide title={activeModel === 'canteen' ? "Концепция и Рынок" : "Концепция Dark Kitchen"} className={activeModel === 'canteen' ? "bg-[#059669] text-white" : "bg-[#1f2937] text-white"}>
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-full">
             {/* Concept Card - Large */}
-            <div className="col-span-1 md:col-span-8 p-8 rounded-3xl bg-white text-black flex flex-col justify-between">
+            <div className="col-span-1 md:col-span-12 p-8 rounded-3xl bg-white text-black flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 bg-gray-100 rounded-full">
@@ -205,9 +205,14 @@ export default function App() {
                 </div>
                 <p className="text-xl leading-snug mb-6 text-gray-800">
                   {activeModel === 'canteen'
-                    ? 'Современный формат: вкусная домашняя еда, высокая скорость обслуживания и честные цены. Никакого ожидания официантов.'
+                    ? 'За 6 лет жизни в Сербии мы увидели четкий тренд: русские рестораны закрываются из-за сложности управления и высоких цен. Люди устали от долгого ожидания и переплат за сервис.'
                     : 'Оптимизированное производство для работы с агрегаторами (Wolt, Glovo) и собственной доставки в офисы/на дом.'}
                 </p>
+                {activeModel === 'canteen' && (
+                  <p className="text-lg leading-snug mb-6 text-gray-600 italic border-l-4 border-[#059669] pl-4">
+                    Видим огромный спрос на "честную еду": быстро, по-домашнему вкусно и по доступной цене. Пустота между дорогими ресторанами и фастфудом — наша ниша.
+                  </p>
+                )}
               </div>
               <div className="flex flex-col h-full gap-4 md:gap-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 flex-1">
@@ -256,7 +261,7 @@ export default function App() {
                   </div>
 
                   <div className="bg-white/10 p-5 sm:p-6 md:p-8 rounded-[32px] flex flex-col justify-center backdrop-blur-sm">
-                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-6">Рынок Нарвы</h3>
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-6">Рынок Сербии (Белград)</h3>
                     <div className="space-y-3 md:space-y-6">
                       <div className="flex items-center gap-3 p-3 bg-white/20 rounded-xl">
                         <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center text-white font-bold text-xs">ИТ</div>
@@ -435,7 +440,7 @@ export default function App() {
                   {activeModel === 'canteen' ? '1. Зал (Оффлайн)' : '1. Масштаб'}
                 </h4>
                 <div className="text-xl md:text-2xl font-bold text-gray-800 mb-0 md:mb-1">
-                  {activeModel === 'canteen' ? '40 ' : '100% '}
+                  {activeModel === 'canteen' ? '60 ' : '100% '}
                   <span className="text-[10px] md:text-xs text-gray-400 font-normal">
                     {activeModel === 'canteen' ? 'чел/день' : 'Фокус на доставку'}
                   </span>
@@ -448,7 +453,7 @@ export default function App() {
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-1 md:mb-2"><Smartphone className="w-4 h-4 md:w-5 md:h-5" /></div>
                 <h4 className="text-base md:text-lg font-bold mb-1">2. Доставка</h4>
                 <div className="text-xl md:text-2xl font-bold text-gray-800 mb-0 md:mb-1">
-                  {activeModel === 'canteen' ? '20' : '50'} <span className="text-[10px] md:text-xs text-gray-400 font-normal">зак/день</span>
+                  {activeModel === 'canteen' ? '30' : '60'} <span className="text-[10px] md:text-xs text-gray-400 font-normal">зак/день</span>
                 </div>
                 <p className="text-[10px] md:text-xs text-gray-500 leading-tight">Wolt / Glovo. Обед на дом.</p>
               </div>
@@ -456,7 +461,7 @@ export default function App() {
                 <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-100 rounded-full flex items-center justify-center text-black mb-1 md:mb-2"><LayoutList className="w-4 h-4 md:w-5 md:h-5" /></div>
                 <h4 className="text-base md:text-lg font-bold mb-1">3. Питание компаний</h4>
                 <div className="text-xl md:text-2xl font-bold text-gray-800 mb-0 md:mb-1">
-                  {activeModel === 'canteen' ? '50' : '80'} <span className="text-[10px] md:text-xs text-gray-400 font-normal">обедов</span>
+                  {activeModel === 'canteen' ? '60' : '80'} <span className="text-[10px] md:text-xs text-gray-400 font-normal">обедов</span>
                 </div>
                 <p className="text-[10px] md:text-xs text-gray-500 leading-tight">Корпоративные контракты.</p>
               </div>

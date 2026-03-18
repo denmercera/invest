@@ -4,12 +4,12 @@ import Card from './Card';
 
 const modelsData = {
     canteen: {
-        investment: 45200,
+        investment: 69600,
         monthlyProfit: 5500,
         initialBurn: [-2000, -500, 0]
     },
     darkKitchen: {
-        investment: 40000,
+        investment: 49100,
         monthlyProfit: 4500,
         initialBurn: [-2500, -1000, 0]
     }

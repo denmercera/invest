@@ -8,14 +8,14 @@ const modelsData = {
         { name: 'Вытяжка и вентиляция', value: 6000, color: '#10B981' },
         { name: 'Ремонт и Мебель', value: 5000, color: '#059669' },
         { name: 'Авто/Транспорт', value: 4000, color: '#6EE7B7' },
-        { name: 'Подушка (Безопасность)', value: 12200, color: '#FFC107' },
+        { name: 'Подушка (Безопасность) * 3 мес', value: 36600, color: '#FFC107' },
     ],
     darkKitchen: [
         { name: 'Кухня (Оборудование)', value: 8000, color: '#0F5132' },
         { name: 'Вентиляция (Пром)', value: 4000, color: '#1F2937' },
-        { name: 'Автопарк', value: 6000, color: '#374151' },
-        { name: 'Ремонт/Интерьер', value: 5000, color: '#9CA3AF' },
-        { name: 'Подушка (Безопасность)', value: 17000, color: '#FFC107' },
+        { name: 'Автопарк / Доставка', value: 6000, color: '#374151' },
+        { name: 'Ремонт / Офис', value: 5000, color: '#9CA3AF' },
+        { name: 'Подушка (Безопасность) * 3 мес', value: 26100, color: '#FFC107' },
     ]
 };
 
